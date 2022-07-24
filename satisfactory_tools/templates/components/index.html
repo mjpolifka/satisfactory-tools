@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for component in components %}
-        <h3>{{ component.name }}</h3>
+        <h3>{{ component.name }} - id: {{ component.id }}</h3>
         <ul>
             {% for ingredient in component.ingredient_list %}
                 <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>

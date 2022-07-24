@@ -5,7 +5,7 @@ bp = Blueprint("components", __name__)
 
 @bp.route("/")
 def index():
-    components = Ingredient.query.all()
+    components = Ingredient.query.order_by(Ingredient.id).all()
     return render_template("components/index.html", components=components)
 
 @bp.route("/test")

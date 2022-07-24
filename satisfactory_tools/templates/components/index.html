@@ -5,7 +5,7 @@
         <h3>{{ component.name }}</h3>
         <ul>
             {% for ingredient in component.ingredient_list %}
-                <li>{{ ingredient.ingredient.name }}</li>
+                <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
             {% endfor %}
         </ul>
     {% endfor %}

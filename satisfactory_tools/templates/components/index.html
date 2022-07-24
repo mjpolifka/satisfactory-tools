@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>Test components</h3>
+    {% for component in components %}
+        <h3>{{ component.name }}</h3>
+        <ul>
+            {% for ingredient in component.ingredient_list %}
+                <li>{{ ingredient.ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

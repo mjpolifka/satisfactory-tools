@@ -1,4 +1,5 @@
-from app import db, Ingredient, Recipe
+from satisfactory_tools.db import db
+from satisfactory_tools.models import Ingredient, Recipe
 
 db.drop_all()
 db.create_all()

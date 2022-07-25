@@ -2,24 +2,26 @@
 # Satisfactory Tools
 
 ## To run:
-set environment variables (examples are in windows cmd):
+Set environment variables (examples are in windows cmd):
 
-Windows CMD:
-- set FLASK_ENV=development
-- set FLASK_APP=app.py
-Windows PowerShell:
-- $env:FLASK_ENV="development"
-- $env:FLASK_APP="app.py"
-Linux/Unix/(?Mac?):
-- TODO
+    Windows CMD:
+    - set FLASK_ENV=development
+    - set FLASK_APP=app.py
 
-run `flask run` to start the development server
+    Windows PowerShell:
+    - $env:FLASK_ENV="development"
+    - $env:FLASK_APP="app.py"
+
+    Linux/Unix/(?Mac?):
+    - TODO
+
+run `flask run` to start the development server  
 in your browser, navigate to http://localhost:5000/init_db/ the first time you run it
 
 Then to access the app, navigate to http://localhost:5000/
 
 
-## "Documentation" (for now, basically just some notes)
+## "Documentation" (for now, basically just some notes):
 
 uses flask and flask-sqlalchemy, with an sqlite database
 doesn't do much yet
@@ -31,7 +33,7 @@ doesn't do much yet
 - Homepage (components/index.html | components.py/index) should group components by where they're made
 
 ### Planning
-- in components/index.html make each item a link to /components/<id>
+- in components/index.html make each item a link to /components/<\id>
     - create a new view for an individual component
         - show the ingredients for the item
         - eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')

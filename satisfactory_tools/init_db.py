@@ -22,7 +22,8 @@ def init_db():
     copper_ore = Ingredient(name='copper ore', made_in=made_in, speed=1, quantity=1)
     limestone = Ingredient(name='limestone', made_in=made_in, speed=1, quantity=1)
     coal = Ingredient(name='coal', made_in=made_in, speed=1, quantity=1)
-    list.extend([iron_ore, copper_ore, limestone, coal])
+    raw_quartz = Ingredient(name='raw quartz', made_in=made_in, speed=1, quantity=1)
+    list.extend([iron_ore, copper_ore, limestone, coal, raw_quartz])
 
     # Smelter
     made_in = 'smelter'
@@ -44,17 +45,23 @@ def init_db():
     cable = Ingredient(name='cable', made_in=made_in, speed=2, quantity=1)
     concrete = Ingredient(name='concrete', made_in=made_in, speed=4, quantity=1)
     copper_sheet = Ingredient(name='copper sheet', made_in=made_in, speed=6, quantity=1)
+    quartz_crystal = Ingredient(name='quartz crystal', made_in=made_in, speed=8, quantity=3)
+    silica = Ingredient(name='silica', made_in=made_in, speed=8, quantity=5)
     #biomass is made from ingredients harvested by hand
-    list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet])
+    list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica])
 
     # Assembler
     made_in = 'assembler'
     reinforced_iron_plate = Ingredient(name='reinforced iron plate', made_in=made_in, speed=12, quantity=1)
-    list.extend([reinforced_iron_plate])
+    rotor = Ingredient(name='rotor', made_in=made_in, speed=15, quantity=1)
+    modular_frame = Ingredient(name='modular frame', made_in=made_in, speed=60, quantity=2)
+    smart_plating = Ingredient(name='smart plating', made_in=made_in, speed=30, quantity=1)
+    list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating])
 
     # Manufacturer
     made_in = 'manufacturer'
-    list.extend([])
+    crystal_oscillator = Ingredient(name='crystal oscillator', made_in=made_in, speed=120, quantity=2)
+    list.extend([crystal_oscillator])
 
 
 
@@ -74,10 +81,23 @@ def init_db():
     Recipe(component=cable, ingredient=wire, quantity=2)
     Recipe(component=concrete, ingredient=limestone, quantity=3)
     Recipe(component=copper_sheet, ingredient=copper_ingot, quantity=2)
+    Recipe(component=quartz_crystal, ingredient=raw_quartz, quantity=5)
+    Recipe(component=silica, ingredient=raw_quartz, quantity=3)
 
     # Assembler
     Recipe(component=reinforced_iron_plate, ingredient=iron_plate, quantity=6)
     Recipe(component=reinforced_iron_plate, ingredient=screw, quantity=12)
+    Recipe(component=rotor, ingredient=screw, quantity=25)
+    Recipe(component=rotor, ingredient=iron_rod, quantity=5)
+    Recipe(component=modular_frame, ingredient=reinforced_iron_plate, quantity=3)
+    Recipe(component=modular_frame, ingredient=iron_rod, quantity=12)
+    Recipe(component=smart_plating, ingredient=reinforced_iron_plate, quantity=1)
+    Recipe(component=smart_plating, ingredient=rotor, quantity=1)
+    
+    # Manufacturer
+    Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)
+    Recipe(component=crystal_oscillator, ingredient=cable, quantity=28)
+    Recipe(component=crystal_oscillator, ingredient=reinforced_iron_plate, quantity=5)
 
     db.session.add_all(list)
 

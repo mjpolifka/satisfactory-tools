@@ -7,7 +7,7 @@ bp = Blueprint("components", __name__)
 def index():
     # This is NOT the right way to do this
     # I need a model for Building so I can query.all() to get this list
-    building_list = ['miner', 'smelter', 'constructor', 'assembler']
+    building_list = ['miner', 'smelter', 'constructor', 'assembler', 'manufacturer']
     components = Ingredient.query.order_by(Ingredient.id).all()
     return render_template(
         "components/index.html",

@@ -31,16 +31,18 @@ Then to access the app, navigate to http://localhost:5000/
 
 ## "Documentation" (basically just some notes for now):
 
-uses flask and flask-sqlalchemy, with an sqlite database  
+uses `flask` and `flask-sqlalchemy`, with an sqlite database  
 doesn't do much yet
 
 
 ## TODO List
 
 ### In-Progress
-- in components/index.html make each item a link to /components/$id
-    - create a new view for an individual component
-        - show the ingredients for the item
+- ~~in components/index.html make each item a link to /components/$id~~
+    - ~~create a new view for an individual component~~
+        - ~~show the ingredients for the item~~
+        - ~~show the quantity made per cycle, per minute, and ingredients per cycle and per minute~~
+        - ~~show the cycle time~~
         - eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')
         - after that, be able to limit the output needed and recalculate all the ingredients
 

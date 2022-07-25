@@ -15,6 +15,11 @@ def index():
         building_list=building_list
     )
 
+@bp.route("/component/<id>")
+def component_by_id(id):
+    component = Ingredient.query.filter_by(id=id).first()
+    return render_template("components/component.html", component=component)
+
 @bp.route("/test")
 def test():
     return "Test complete"

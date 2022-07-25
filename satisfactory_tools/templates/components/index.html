@@ -3,16 +3,16 @@
 {% block content %}
     <div class="container">
         {% for building in building_list %}
-            <h2 style="background-color:black; color:white; padding:10px">{{ building|title }}</h2>
+            <h2 class="component-heading">{{ building|title }}</h2>
 
             <ul>
                 {% for component in components %}
                     {% if component.made_in == building %}
                         <li>
-                            <h3>{{ component.name }} - id: {{ component.id }}</h3>
+                            <h3><a href="{{ url_for('components.component_by_id', id=component.id) }}">{{ component.name|title }}</a> - id: {{ component.id }}</h3>
                             <ul>
                                 {% for ingredient in component.ingredient_list %}
-                                    <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
+                                    <li>{{ ingredient.ingredient.name|title }} - {{ ingredient.quantity }}</li>
                                 {% endfor %}
                             </ul>
                         </li>

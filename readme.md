@@ -31,7 +31,7 @@ Then to access the app, navigate to http://localhost:5000/
 
 ## "Documentation" (basically just some notes for now):
 
-uses `flask` and `flask-sqlalchemy`, with an sqlite database  
+uses `flask` and `flask-sqlalchemy`, with an `sqlite` database  
 doesn't do much yet
 
 
@@ -44,6 +44,8 @@ doesn't do much yet
         - ~~show the quantity made per cycle, per minute, and ingredients per cycle and per minute~~
         - ~~show the cycle time~~
         - eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')
+            - I'm not sure how to do this recursively, and might require another db call (then again, it might not)
+                - Oooo, can I sub-template it, and within that template sub-template itself?
         - after that, be able to limit the output needed and recalculate all the ingredients
 
 ### Planning

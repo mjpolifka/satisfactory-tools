@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 from satisfactory_tools.db import db
 from satisfactory_tools.models import Ingredient, Recipe
@@ -83,4 +83,4 @@ def init_db():
 
     db.session.commit()
 
-    return "database updated"
+    return render_template('init_db.html')

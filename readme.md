@@ -1,8 +1,16 @@
 
 # Satisfactory Tools
 
+## Installation:
+Must have Python installed, I used version 3.10  
+If you don't already have pipenv installed, run `pip install pipenv`
+
+In the terminal, navigate to the satisfactory-tools folder and run `pipenv install` to create a virtual environment and install all dependencies.
+
+You should be ready to run!
+
 ## To run:
-Set environment variables (examples are in windows cmd):
+Set environment variables:
 
     Windows CMD:
     - set FLASK_ENV=development
@@ -15,15 +23,15 @@ Set environment variables (examples are in windows cmd):
     Linux/Unix/(?Mac?):
     - TODO
 
-run `flask run` to start the development server  
-in your browser, navigate to http://localhost:5000/init_db/ the first time you run it
+Run `flask run` to start the development server.  
+In your browser, navigate to http://localhost:5000/init_db/ the first time you run it.
 
 Then to access the app, navigate to http://localhost:5000/
 
 
-## "Documentation" (for now, basically just some notes):
+## "Documentation" (basically just some notes for now):
 
-uses flask and flask-sqlalchemy, with an sqlite database
+uses flask and flask-sqlalchemy, with an sqlite database  
 doesn't do much yet
 
 

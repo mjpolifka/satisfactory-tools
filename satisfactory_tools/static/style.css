@@ -3,3 +3,13 @@
     color: white;
     padding: 10px;
 }
+
+.navbar {
+    background-color: orange;
+}
+
+.navbar-brand {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}

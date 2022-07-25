@@ -47,6 +47,7 @@ doesn't do much yet
             - I'm not sure how to do this recursively, and might require another db call (then again, it might not)
                 - Oooo, can I sub-template it, and within that template sub-template itself?
         - after that, be able to limit the output needed and recalculate all the ingredients
+            - a slider would be sick
 
 ### Planning
 - haven't figured out the 'by_hand' items yet

@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for component in components %}
-        <h3>{{ component.name }} - id: {{ component.id }}</h3>
-        <ul>
-            {% for ingredient in component.ingredient_list %}
-                <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="container">
+        {% for building in building_list %}
+            <h2 style="background-color:black; color:white; padding:10px">{{ building|title }}</h2>
+
+            <ul>
+                {% for component in components %}
+                    {% if component.made_in == building %}
+                        <li>
+                            <h3>{{ component.name }} - id: {{ component.id }}</h3>
+                            <ul>
+                                {% for ingredient in component.ingredient_list %}
+                                    <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock %}

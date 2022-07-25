@@ -38,16 +38,18 @@ doesn't do much yet
 ## TODO List
 
 ### In-Progress
-- Homepage (components/index.html | components.py/index) should group components by where they're made
-
-### Planning
-- in components/index.html make each item a link to /components/<\id>
+- in components/index.html make each item a link to /components/$id
     - create a new view for an individual component
         - show the ingredients for the item
         - eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')
         - after that, be able to limit the output needed and recalculate all the ingredients
+
+### Planning
 - haven't figured out the 'by_hand' items yet
 - need to start calculating items per minute, I'm guessing it's a function shared by everything
 - could use some styling, probably bootstrap
 - is there a way to make this callable as an api without decoupling the templates?
     - if not, start considering when is a good time to refactor this into frontend/backend
+
+### Complete
+- ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

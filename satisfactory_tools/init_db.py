@@ -36,7 +36,7 @@ def init_db():
     list.extend([steel_ingot])
     
     # Constructor
-    made_in = 'contructor'
+    made_in = 'constructor'
     iron_rod = Ingredient(name='iron rod', made_in=made_in, speed=4, quantity=1)
     iron_plate = Ingredient(name='iron plate', made_in=made_in, speed=6, quantity=2)
     screw = Ingredient(name='screw', made_in=made_in, speed=6, quantity=4)

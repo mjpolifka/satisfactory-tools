@@ -6,6 +6,13 @@
         <h3>Made in: {{ component.made_in|title }}</h3>
         <h3>Cycle time: {{ component.speed }} seconds</h3>
         <h3>Recipe makes qty {{ component.quantity }} per cycle, qty {{ ((60/component.speed)*component.quantity)|int }} per minute</h3>
+        
+        <form method="post">
+            <label for="username">Qty Per Minute Desired:</label>
+            <input name="qpm" id="qpm" required>
+            <input type="submit" value="Calculate">
+        </form>
+        
         <h3>Ingredients:</h3>
         <ul>
             {% for ingredient in component.ingredient_list %}

@@ -13,7 +13,7 @@
             <input type="submit" value="Calculate">
         </form>
         
-        <h3>Ingredients for {{ qpm }} per minute:</h3>
+        <h3>Ingredients for {{ qpm }} per minute (not calculated yet):</h3>
         <ul>
             {% for ingredient in component.ingredient_list %}
                 <li>{{ ingredient.ingredient.name|title }} - qty {{ ingredient.quantity }} per cycle, qty {{ ((60/component.speed)*ingredient.quantity)|int }} per minute</li>

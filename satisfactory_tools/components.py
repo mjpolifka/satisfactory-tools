@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from satisfactory_tools.models import Ingredient
 
 bp = Blueprint("components", __name__)
@@ -15,10 +15,16 @@ def index():
         building_list=building_list
     )
 
-@bp.route("/component/<id>")
+@bp.route("/component/<id>", methods=("GET", "POST"))
 def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
-    return render_template("components/component.html", component=component)
+    qpm = str((60 / component.speed) * component.quantity).rstrip('0').rstrip('.')
+    if request.method == "POST":
+        qpm = request.form["qpm"]
+    return render_template("components/component.html",
+                            component=component,
+                            qpm = qpm
+                          )
 
 @bp.route("/test")
 def test():

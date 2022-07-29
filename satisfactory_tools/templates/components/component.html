@@ -8,7 +8,7 @@
         <h1 class="component-heading">{{ component.name|title }}</h1>
         <h3>Made in: {{ component.made_in|title }}</h3>
         <h3>Cycle time: {{ component.speed }} seconds</h3>
-        <h3>Recipe makes qty {{ component.quantity }} per cycle, qty {{ "%.2f"|format(qpm) }} per minute</h3>
+        <h3>Recipe makes qty {{ component.quantity }} per cycle, qty {{ "%.2f"|format((60 / component.speed) * component.quantity) }} per minute</h3>
         
         <form method="post">
             <label for="username">Qty Per Minute Desired:</label>
@@ -28,10 +28,21 @@
         <hr>
         
         <ul>
+            {% set loop_qpm = namespace(value=qpm) %}
+            {% set parent_quantity = namespace(value=component.quantity) %}
             {% for ingredient in component.ingredient_list recursive %}
+                
+                {% if loop.depth == 1 %}
+                    {% set loop_qpm.value = (ingredient.quantity/component.quantity) * qpm %}
+                {% else %}
+                    {% set loop_qpm.value = (ingredient.quantity/parent_quantity.value) * loop_qpm.value %}
+                {% endif %}
+                {% set parent_quantity.value = ingredient.ingredient.quantity %}
+                
                 <li>
-                    {{ingredient.ingredient.name}}
+                    {{ingredient.ingredient.name}} - {{ "%.2f"|format(loop_qpm.value) }}
                 </li>
+
                 {% if ingredient.ingredient.ingredient_list %}
                     <ul>
                         {{ loop(ingredient.ingredient.ingredient_list) }}

@@ -22,5 +22,18 @@
                 <li>{{ ingredient.ingredient.name|title }} - qty {{ ingredient.quantity }} per cycle, qty {{ "%.2f"|format((ingredient.quantity/component.quantity) * qpm) }} per minute</li>
             {% endfor %}
         </ul>
+        <hr>
+        <ul>
+            {%- for ingredient in component.ingredient_list recursive %}
+                <li>
+                    {{ingredient.ingredient.name}}
+                </li>
+                {%- if ingredient.ingredient.ingredient_list %}
+                    <ul>
+                        {{- loop(ingredient.ingredient.ingredient_list) }}
+                    </ul>
+                {%- endif %}
+            {%- endfor %}
+        </ul>
     </div>
 {% endblock %}

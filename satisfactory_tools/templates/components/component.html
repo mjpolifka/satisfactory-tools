@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
+{% block title %} - {{ component.name|title }}{% endblock %}
+
 {% block content %}
     <div class="container">
+        {% for i in ingredients %}
+            <p>{{ i[0][0].name + " - " + i[0][0].quantity|string }}</p>
+        {% endfor %}
         <h1 class="component-heading">{{ component.name|title }}</h1>
         <h3>Made in: {{ component.made_in|title }}</h3>
         <h3>Cycle time: {{ component.speed }} seconds</h3>
@@ -17,6 +22,12 @@
         <ul>
             {% for ingredient in component.ingredient_list %}
                 <li>{{ ingredient.ingredient.name|title }} - qty {{ ingredient.quantity }} per cycle, qty {{ "%.2f"|format((ingredient.quantity/component.quantity) * qpm) }} per minute</li>
+                    <ul>
+                        <li>Ingredients: {{ ingredient.ingredient.speed }}</li>
+                        {% for i in ingredient.ingredient.ingredients_list %}
+                            <li>{{ i.ingredient.name|title }} - qty {{ i.quantity }} per cycle</li>
+                        {% endfor %}
+                    </ul>
             {% endfor %}
         </ul>
     </div>

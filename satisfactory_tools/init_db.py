@@ -54,9 +54,9 @@ def init_db():
 
     # Refinery
     made_in = 'refinery'
-    polymer_resin = Ingredient(name='polymer resin', made_in=made_in, speed=6, qty=3)
-    plastic = Ingredient(name='plastic', made_in=made_in, speed=6, qty=2)
-    rubber = Ingredient(name='rubber', made_in=made_in, speed=6, qty=2)
+    polymer_resin = Ingredient(name='polymer resin', made_in=made_in, speed=6, quantity=3)
+    plastic = Ingredient(name='plastic', made_in=made_in, speed=6, quantity=2)
+    rubber = Ingredient(name='rubber', made_in=made_in, speed=6, quantity=2)
     list.extend([polymer_resin, plastic, rubber])
     
     # Constructor

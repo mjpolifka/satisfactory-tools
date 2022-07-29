@@ -30,7 +30,7 @@
         <ul>
             {% for key, ingredient in ingredients.items() recursive %}
                 <li>
-                    {{ingredient.ingredient.name}}
+                    {{ingredient.ingredient.name}} - {{ingredient.qpm}}
                 </li>
 
                 {% if ingredient.ingredients %}

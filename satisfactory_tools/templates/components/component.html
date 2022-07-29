@@ -16,24 +16,28 @@
             <input type="submit" value="Calculate">
         </form>
         
+        <hr>
+
         <h3>Ingredients for {{ "%.2f"|format(qpm) }} per minute:</h3>
         <ul>
-            {% for ingredient in ingredients %}
+            {% for ingredient in component.ingredient_list %}
                 <li>{{ ingredient.ingredient.name|title }} - qty {{ ingredient.quantity }} per cycle, qty {{ "%.2f"|format((ingredient.quantity/component.quantity) * qpm) }} per minute</li>
             {% endfor %}
         </ul>
+        
         <hr>
+        
         <ul>
-            {%- for ingredient in component.ingredient_list recursive %}
+            {% for ingredient in component.ingredient_list recursive %}
                 <li>
                     {{ingredient.ingredient.name}}
                 </li>
-                {%- if ingredient.ingredient.ingredient_list %}
+                {% if ingredient.ingredient.ingredient_list %}
                     <ul>
-                        {{- loop(ingredient.ingredient.ingredient_list) }}
+                        {{ loop(ingredient.ingredient.ingredient_list) }}
                     </ul>
-                {%- endif %}
-            {%- endfor %}
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
 {% endblock %}

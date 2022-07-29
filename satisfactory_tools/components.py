@@ -19,28 +19,26 @@ def index():
 @bp.route("/component/<id>", methods=("GET", "POST"))
 def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
-    ingredients = build_ingredients(component)
     qpm = (60 / component.speed) * component.quantity
     if request.method == "POST":
         qpm = float(request.form["qpm"])
     return render_template("components/component.html",
                             component=component,
-                            qpm = qpm,
-                            ingredients=ingredients)
+                            qpm = qpm)
 
 @bp.route("/test")
 def test():
     return "Test complete"
 
-def build_ingredients(component):
-    if component.made_in not in ("by_hand, miner, oil extractor, water extractor"):
-        ingredients = component.ingredient_list
-        built_ingredients = []
-        for ingredient in ingredients:
-            quantity = ingredient.quantity
-            ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
-            built_ingredients.append({"ingredient": ingredient, "quantity": quantity})
-        print(built_ingredients)
-        return built_ingredients
-    else:
-        return 0
+# def build_ingredients(component):
+#     if component.made_in not in ("by_hand, miner, oil extractor, water extractor"):
+#         ingredients = component.ingredient_list
+#         built_ingredients = []
+#         for ingredient in ingredients:
+#             quantity = ingredient.quantity
+#             ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
+#             built_ingredients.append({"ingredient": ingredient, "quantity": quantity})
+#         print(built_ingredients)
+#         return built_ingredients
+#     else:
+#         return 0

@@ -39,8 +39,8 @@ def build_ingredients(component, qpm):
         built_ingredients = {}
         
         for ingredient in ingredients:
-            ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
             quantity = ingredient.quantity
+            ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
             new_qpm = (quantity/component.quantity) * qpm
 
             ingredient_dict = {"ingredient": ingredient, "quantity": quantity, "qpm": new_qpm}

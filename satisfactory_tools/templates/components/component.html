@@ -28,6 +28,21 @@
         <hr>
         
         <ul>
+            {% for key, ingredient in ingredients.items() recursive %}
+                <li>
+                    {{ingredient.ingredient.name}}
+                </li>
+
+                {% if ingredient.ingredients %}
+                    <ul>
+                        {{ loop(ingredient.ingredients.items()) }}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <hr>
+        <ul>
             {% set loop_qpm = namespace(value=qpm) %}
             {% set parent_quantity = namespace(value=component.quantity) %}
             {% for ingredient in component.ingredient_list recursive %}

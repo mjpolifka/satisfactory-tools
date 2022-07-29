@@ -21,7 +21,6 @@ def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
     qpm = (60 / component.speed) * component.quantity
     ingredients = build_ingredients(component, qpm)
-    print(ingredients)
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
@@ -38,18 +37,21 @@ def build_ingredients(component, qpm):
     if component.made_in not in ("by_hand, miner, oil extractor, water extractor"):
         ingredients = component.ingredient_list
         built_ingredients = {}
+        
         for ingredient in ingredients:
-            quantity = ingredient.quantity
             ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
+            quantity = ingredient.quantity
             new_qpm = (quantity/component.quantity) * qpm
+
             ingredient_dict = {"ingredient": ingredient, "quantity": quantity, "qpm": new_qpm}
             
             ingredients = build_ingredients(ingredient, new_qpm)
             
             if ingredients != 0:
                 ingredient_dict.update({"ingredients": ingredients})
+
             built_ingredients.update({ingredient.name: ingredient_dict})
-        # print(built_ingredients)
+        
         return built_ingredients
     else:
         return 0

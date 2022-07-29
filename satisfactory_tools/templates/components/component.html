@@ -19,18 +19,11 @@
         <hr>
 
         <h3>Ingredients for {{ "%.2f"|format(qpm) }} per minute:</h3>
-        <ul>
-            {% for ingredient in component.ingredient_list %}
-                <li>{{ ingredient.ingredient.name|title }} - qty {{ ingredient.quantity }} per cycle, qty {{ "%.2f"|format((ingredient.quantity/component.quantity) * qpm) }} per minute</li>
-            {% endfor %}
-        </ul>
-        
-        <hr>
         
         <ul>
             {% for key, ingredient in ingredients.items() recursive %}
                 <li>
-                    {{ingredient.ingredient.name}} - {{ingredient.qpm}}
+                    {{ ingredient.ingredient.name|title }} ({{ ingredient.ingredient.made_in|title }}) - {{ "%.2f"|format(ingredient.qpm) }}
                 </li>
 
                 {% if ingredient.ingredients %}
@@ -41,29 +34,4 @@
             {% endfor %}
         </ul>
 
-        <hr>
-        <ul>
-            {% set loop_qpm = namespace(value=qpm) %}
-            {% set parent_quantity = namespace(value=component.quantity) %}
-            {% for ingredient in component.ingredient_list recursive %}
-                
-                {% if loop.depth == 1 %}
-                    {% set loop_qpm.value = (ingredient.quantity/component.quantity) * qpm %}
-                {% else %}
-                    {% set loop_qpm.value = (ingredient.quantity/parent_quantity.value) * loop_qpm.value %}
-                {% endif %}
-                {% set parent_quantity.value = ingredient.ingredient.quantity %}
-                
-                <li>
-                    {{ingredient.ingredient.name}} - {{ "%.2f"|format(loop_qpm.value) }}
-                </li>
-
-                {% if ingredient.ingredient.ingredient_list %}
-                    <ul>
-                        {{ loop(ingredient.ingredient.ingredient_list) }}
-                    </ul>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
 {% endblock %}

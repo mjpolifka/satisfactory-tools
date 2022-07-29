@@ -38,8 +38,8 @@ def build_ingredients(component):
         built_ingredients = []
         for ingredient in ingredients:
             quantity = ingredient.quantity
-            ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id)
-            built_ingredients.append((ingredient, quantity))
+            ingredient = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
+            built_ingredients.append({"ingredient": ingredient, "quantity": quantity})
         print(built_ingredients)
         return built_ingredients
     else:

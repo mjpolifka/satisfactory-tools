@@ -19,9 +19,9 @@ def index():
 @bp.route("/component/<id>", methods=("GET", "POST"))
 def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
-    qpm = str((60 / component.speed) * component.quantity).rstrip('0').rstrip('.')
+    qpm = (60 / component.speed) * component.quantity
     if request.method == "POST":
-        qpm = request.form["qpm"]
+        qpm = float(request.form["qpm"])
     return render_template("components/component.html",
                             component=component,
                             qpm = qpm)

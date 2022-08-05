@@ -56,5 +56,8 @@ doesn't do much yet
 - is there a way to make this callable as an api without decoupling the templates?
     - if not, start considering when is a good time to refactor this into frontend/backend
 
+### Thoughts
+- if I create an "order" column in the Ingredients in db, I can choose how they appear
+
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

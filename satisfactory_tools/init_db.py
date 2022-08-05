@@ -75,6 +75,7 @@ def init_db():
     iron_rebar = Ingredient(name='iron rebar', made_in=made_in, speed=4, quantity=1)
     quickwire = Ingredient(name='quickwire', made_in=made_in, speed=5, quantity=5)
     #biomass is made from ingredients harvested by hand
+        #so what?  Works fine for the miner; just give it a fake time and remember it needs to be fixed
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
                  steel_pipe, iron_rebar, quickwire])
 

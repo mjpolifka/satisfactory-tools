@@ -10,7 +10,7 @@ In the terminal, navigate to the satisfactory-tools folder and run `pipenv insta
 You should be ready to run!
 
 ## To run:
-Set environment variables:
+Set environment variables (can skip if you're not editing the code):
 
     Windows CMD:
     - set FLASK_ENV=development
@@ -26,20 +26,19 @@ Set environment variables:
 Run `flask run` to start the development server.  
 In your browser, navigate to http://localhost:5000/init_db/ the first time you run it.
 
-Then to access the app, navigate to http://localhost:5000/
+Then, to access the app, navigate to http://localhost:5000/
 
 
 ## "Documentation" (basically just some notes for now):
 
 uses `flask` and `flask-sqlalchemy`, with an `sqlite` database  
-doesn't do much yet
+does more now, but not sure what to document 
+the code seems quite readable to me (but of course it would)
 
 
 ## TODO List
 
 ### In-Progress
-- ~~need to start calculating items per minute, I'm guessing it's a function shared by everything~~
-    - qpm; did it mostly in my template (in fact, I should move the last remnant)
 - get an error when I try and recursively get ingredients for miner items
     - I'm trying to click on the raw material... what _should_ it show me?
 - haven't figured out the 'by_hand' items yet
@@ -53,6 +52,8 @@ doesn't do much yet
 
 ### Thoughts
 - if I create an "order" column in the Ingredients in db, I can choose how they appear
+- I could add power requirements, I bet that will be important soon
+- still needs a lot of help with styling, maybe a color scheme
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~
@@ -65,4 +66,6 @@ doesn't do much yet
         - ~~after that, be able to limit the output needed and recalculate all the ingredients~~
             - ~~a slider would be sick~~
             - ~~eh, this number box is fine, I usually want to type it anyway~~
+- ~~need to start calculating items per minute, I'm guessing it's a function shared by everything~~
+    - ~~qpm; did it mostly in my template (in fact, I should move the last remnant - oh, it's needed)~~
 - ~~could use some styling, probably bootstrap~~

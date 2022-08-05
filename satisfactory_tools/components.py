@@ -5,10 +5,18 @@ bp = Blueprint("components", __name__)
 
 @bp.route("/")
 def index():
+    all_components = Ingredient.query.all()
+    building_list = []
+    for component in all_components:
+        if component.made_in not in building_list:
+            building_list.append(component.made_in)
+    print(building_list)
+    # I don't need a model for building, but you were on the right track!
+    
     # This is NOT the right way to do this
     # I need a model for Building so I can query.all() to get this list
-    building_list = ['miner', 'smelter', 'constructor', 
-                     'assembler', 'manufacturer']
+    # building_list = ['miner', 'smelter', 'constructor', 
+    #                  'assembler', 'manufacturer', 'refinery']
     components = Ingredient.query.order_by(Ingredient.id).all()
     return render_template(
         "components/index.html",

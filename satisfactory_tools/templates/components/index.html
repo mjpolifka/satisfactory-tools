@@ -10,8 +10,8 @@
             <ul>
                 {% for component in components %}
                     {% if component.made_in == building %}
-                        <li>
-                            <h3><a href="{{ url_for('components.component_by_id', id=component.id) }}">{{ component.name|title }}</a> qty {{ component.quantity }}</h3>
+                        <li class="my-list-item">
+                            <h3><a class="my-link" href="{{ url_for('components.component_by_id', id=component.id) }}">{{ component.name|title }}</a> qty {{ component.quantity }}</h3>
                             <ul>
                                 {% for ingredient in component.ingredient_list %}
                                     <li>{{ ingredient.ingredient.name|title }} qty {{ ingredient.quantity }}</li>

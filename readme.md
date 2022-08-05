@@ -39,6 +39,9 @@ the code seems quite readable to me (but of course it would)
 ## TODO List
 
 ### In-Progress
+- still needs a lot of help with styling, maybe a color scheme
+    - index page is decent
+    - component page needs a lot of help
 - get an error when I try and recursively get ingredients for miner items
     - I'm trying to click on the raw material... what _should_ it show me?
 - haven't figured out the 'by_hand' items yet
@@ -53,7 +56,6 @@ the code seems quite readable to me (but of course it would)
 ### Thoughts
 - if I create an "order" column in the Ingredients in db, I can choose how they appear
 - I could add power requirements, I bet that will be important soon
-- still needs a lot of help with styling, maybe a color scheme
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

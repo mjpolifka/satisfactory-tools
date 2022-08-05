@@ -38,22 +38,17 @@ doesn't do much yet
 ## TODO List
 
 ### In-Progress
-- ~~in components/index.html make each item a link to /components/$id~~
-    - ~~create a new view for an individual component~~
-        - ~~show the ingredients for the item~~
-        - ~~show the quantity made per cycle, per minute, and ingredients per cycle and per minute~~
-        - ~~show the cycle time~~
-        - eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')
-            - I'm not sure how to do this recursively, and might require another db call (then again, it might not)
-                - Oooo, can I sub-template it, and within that template sub-template itself?
-        - after that, be able to limit the output needed and recalculate all the ingredients
-            - a slider would be sick
+- ~~need to start calculating items per minute, I'm guessing it's a function shared by everything~~
+    - qpm; did it mostly in my template (in fact, I should move the last remnant)
+- get an error when I try and recursively get ingredients for miner items
+    - I'm trying to click on the raw material... what _should_ it show me?
+- haven't figured out the 'by_hand' items yet
+    - just add them as if they come from a miner
+    - give them a fake time if you have to until we figure out how to detect it
 
 ### Planning
-- haven't figured out the 'by_hand' items yet
-- need to start calculating items per minute, I'm guessing it's a function shared by everything
-- could use some styling, probably bootstrap
 - is there a way to make this callable as an api without decoupling the templates?
+    - I think there was, it's in the pluralsight that I hated
     - if not, start considering when is a good time to refactor this into frontend/backend
 
 ### Thoughts
@@ -61,3 +56,13 @@ doesn't do much yet
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~
+- ~~in components/index.html make each item a link to /components/$id~~
+    - ~~create a new view for an individual component~~
+        - ~~show the ingredients for the item~~
+        - ~~show the quantity made per cycle, per minute, and ingredients per cycle and per minute~~
+        - ~~show the cycle time~~
+        - ~~eventually show the ingredients for all ingredients back to an item with a made_in in ('by_hand', 'miner')~~
+        - ~~after that, be able to limit the output needed and recalculate all the ingredients~~
+            - ~~a slider would be sick~~
+            - ~~eh, this number box is fine, I usually want to type it anyway~~
+- ~~could use some styling, probably bootstrap~~

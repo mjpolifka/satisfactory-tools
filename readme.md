@@ -39,16 +39,17 @@ the code seems quite readable to me (but of course it would)
 ## TODO List
 
 ### In-Progress
-- still needs a lot of help with styling, maybe a color scheme
-    - index page is decent
+- ~~still needs a lot of help with styling, maybe a color scheme~~
+    - ~~index page is decent~~
     - component page needs a lot of help
-- get an error when I try and recursively get ingredients for miner items
-    - I'm trying to click on the raw material... what _should_ it show me?
 - haven't figured out the 'by_hand' items yet
     - just add them as if they come from a miner
     - give them a fake time if you have to until we figure out how to detect it
 
 ### Planning
+- need to create a list of what buildings you need to create the factory
+- get an error when I try and recursively get ingredients for miner items
+    - I'm trying to click on the raw material... what _should_ it show me?
 - is there a way to make this callable as an api without decoupling the templates?
     - I think there was, it's in the pluralsight that I hated
     - if not, start considering when is a good time to refactor this into frontend/backend

@@ -57,6 +57,7 @@ the code seems quite readable to me (but of course it would)
 ### Thoughts
 - if I create an "order" column in the Ingredients in db, I can choose how they appear
 - I could add power requirements, I bet that will be important soon
+- in the component template, calculate how many of the main building you need for the qpm entered
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

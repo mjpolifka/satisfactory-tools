@@ -25,7 +25,7 @@
         <ul>
             {% for key, ingredient in ingredients.items() recursive %}
                 <li>
-                    {{ ingredient.ingredient.name|title }} ({{ ingredient.ingredient.made_in|title }}) - {{ "%.2f"|format(ingredient.qpm) }}
+                    <a href="{{ url_for('components.component_by_id', id=ingredient.ingredient.id) }}">{{ ingredient.ingredient.name|title }}</a> ({{ ingredient.ingredient.made_in|title }}) - {{ "%.2f"|format(ingredient.qpm) }}
                 </li>
 
                 {% if ingredient.ingredients %}

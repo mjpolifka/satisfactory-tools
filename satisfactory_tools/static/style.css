@@ -33,6 +33,7 @@ body {
 .container {
     box-shadow: 0 0 30px 10px rgb(75, 75, 75);
     padding-bottom: 40px;
+    background-color: rgb(230,230,230);
     /* height: 100% */
 }
 

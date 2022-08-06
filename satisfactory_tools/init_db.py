@@ -28,7 +28,9 @@ def init_db():
     raw_quartz = Ingredient(name='raw quartz', made_in=made_in, speed=1, quantity=1)
     sulphur = Ingredient(name='sulphur', made_in=made_in, speed=1, quantity=1)
     caterium_ore = Ingredient(name='caterium', made_in=made_in, speed=1, quantity=1)
-    list.extend([iron_ore, copper_ore, limestone, coal, raw_quartz, sulphur, caterium_ore])
+    bauxite = Ingredient(name='bauxite', made_in=made_in, speed=1, quantity=1)
+    list.extend([iron_ore, copper_ore, limestone, coal, raw_quartz, sulphur, caterium_ore,
+                 bauxite])
 
     # Oil Extractor
     made_in = 'oil extractor'
@@ -50,14 +52,17 @@ def init_db():
     # Foundry
     made_in = 'foundry'
     steel_ingot = Ingredient(name='steel ingot', made_in=made_in, speed=4, quantity=3)
-    list.extend([steel_ingot])
+    aluminum_ingot = Ingredient(name='aluminum ingot', made_in=made_in, speed=4, quantity=4)
+    list.extend([steel_ingot, aluminum_ingot])
 
     # Refinery
     made_in = 'refinery'
     polymer_resin = Ingredient(name='polymer resin', made_in=made_in, speed=6, quantity=3)
     plastic = Ingredient(name='plastic', made_in=made_in, speed=6, quantity=2)
     rubber = Ingredient(name='rubber', made_in=made_in, speed=6, quantity=2)
-    list.extend([polymer_resin, plastic, rubber])
+    alumina_solution = Ingredient(name='alumina solution', made_in=made_in, speed=6, quantity=12)
+    aluminum_scrap = Ingredient(name='aluminum scrap', made_in=made_in, speed=1, quantity=6)
+    list.extend([polymer_resin, plastic, rubber, alumina_solution, aluminum_scrap])
     
     # Constructor
     made_in = 'constructor'
@@ -74,10 +79,13 @@ def init_db():
     steel_pipe = Ingredient(name='steel pipe', made_in=made_in, speed=6, quantity=2)
     iron_rebar = Ingredient(name='iron rebar', made_in=made_in, speed=4, quantity=1)
     quickwire = Ingredient(name='quickwire', made_in=made_in, speed=5, quantity=5)
+    aluminum_casing = Ingredient(name='aluminum casing', made_in=made_in, speed=2, quantity=2)
+
     #biomass is made from ingredients harvested by hand
         #so what?  Works fine for the miner; just give it a fake time and remember it needs to be fixed
+        #it also has 3 different recipes and I'm not sure how to do that yet
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
-                 steel_pipe, iron_rebar, quickwire])
+                 steel_pipe, iron_rebar, quickwire, aluminum_casing])
 
     # Assembler
     made_in = 'assembler'
@@ -93,8 +101,10 @@ def init_db():
     automated_wiring = Ingredient(name='automated wiring', made_in=made_in, speed=24, quantity=1)
     ai_limiter = Ingredient(name='ai limiter', made_in=made_in, speed=12, quantity=1)
     circuit_board = Ingredient(name='circuit board', made_in=made_in, speed=8, quantity=1)
+    alclad_aluminum_sheet = Ingredient(name='alclas aluminum sheet', made_in=made_in, speed=6, quantity=3)
     list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating, versatile_framework, black_powder, 
-                 encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board])
+                 encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board,
+                 alclad_aluminum_sheet])
 
     # Manufacturer
     made_in = 'manufacturer'
@@ -103,7 +113,11 @@ def init_db():
     computer = Ingredient(name='computer', made_in=made_in, speed=24, quantity=1)
     modular_engine = Ingredient(name='modular engine', made_in=made_in, speed=60, quantity=1)
     adaptive_control_unit = Ingredient(name='adaptive control unit', made_in=made_in, speed=120, quantity=2)
-    list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit])
+    high_speed_connector = Ingredient(name='high speed connector', made_in=made_in, speed=16, quantity=1)
+    supercomputer = Ingredient(name='supercomputer', made_in=made_in, speed=32, quantity=1)
+    radio_control_unit = Ingredient(name='radio control unit', made_in=made_in, speed=48, quantity=2)
+    list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit, 
+                 high_speed_connector, supercomputer, radio_control_unit])
 
 
 
@@ -115,6 +129,8 @@ def init_db():
     # Foundry
     Recipe(component=steel_ingot, ingredient=iron_ore, quantity=3)
     Recipe(component=steel_ingot, ingredient=coal, quantity=3)
+    Recipe(component=aluminum_ingot, ingredient=aluminum_scrap, quantity=6)
+    Recipe(component=aluminum_ingot, ingredient=silica, quantity=5)
 
     # Refinery
     Recipe(component=polymer_resin, ingredient=crude_oil, quantity=6)
@@ -122,6 +138,10 @@ def init_db():
     Recipe(component=plastic, ingredient=water, quantity=2)
     Recipe(component=rubber, ingredient=polymer_resin, quantity=4)
     Recipe(component=rubber, ingredient=water, quantity=4)
+    Recipe(component=alumina_solution, ingredient=bauxite, quantity=12)
+    Recipe(component=alumina_solution, ingredient=water, quantity=18)
+    Recipe(component=aluminum_scrap, ingredient=alumina_solution, quantity=4)
+    Recipe(component=aluminum_scrap, ingredient=coal, quantity=2)
 
     # Constructor
     Recipe(component=iron_rod, ingredient=iron_ingot, quantity=1)
@@ -137,6 +157,7 @@ def init_db():
     Recipe(component=steel_pipe, ingredient=steel_ingot, quantity=3)
     Recipe(component=iron_rebar, ingredient=iron_rod, quantity=1)
     Recipe(component=quickwire, ingredient=caterium_ingot, quantity=1)
+    Recipe(component=aluminum_casing, ingredient=aluminum_ingot, quantity=3)
 
     # Assembler
     Recipe(component=reinforced_iron_plate, ingredient=iron_plate, quantity=6)
@@ -163,6 +184,8 @@ def init_db():
     Recipe(component=ai_limiter, ingredient=quickwire, quantity=20)
     Recipe(component=circuit_board, ingredient=copper_sheet, quantity=2)
     Recipe(component=circuit_board, ingredient=plastic, quantity=4)
+    Recipe(component=alclad_aluminum_sheet, ingredient=aluminum_ingot, quantity=3)
+    Recipe(component=alclad_aluminum_sheet, ingredient=copper_ingot, quantity=1)
     
     # Manufacturer
     Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)
@@ -183,6 +206,16 @@ def init_db():
     Recipe(component=adaptive_control_unit, ingredient=circuit_board, quantity=10)
     Recipe(component=adaptive_control_unit, ingredient=heavy_modular_frame, quantity=2)
     Recipe(component=adaptive_control_unit, ingredient=computer, quantity=2)
+    Recipe(component=high_speed_connector, ingredient=quickwire, quantity=56)
+    Recipe(component=high_speed_connector, ingredient=cable, quantity=10)
+    Recipe(component=high_speed_connector, ingredient=circuit_board, quantity=1)
+    Recipe(component=supercomputer, ingredient=computer, quantity=2)
+    Recipe(component=supercomputer, ingredient=ai_limiter, quantity=2)
+    Recipe(component=supercomputer, ingredient=high_speed_connector, quantity=3)
+    Recipe(component=supercomputer, ingredient=plastic, quantity=28)
+    Recipe(component=radio_control_unit, ingredient=aluminum_casing, quantity=32)
+    Recipe(component=radio_control_unit, ingredient=crystal_oscillator, quantity=1)
+    Recipe(component=radio_control_unit, ingredient=computer, quantity=1)
 
     db.session.add_all(list)
 

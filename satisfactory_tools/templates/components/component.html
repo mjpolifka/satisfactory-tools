@@ -24,9 +24,10 @@
         
         <ul>
             {% for key, ingredient in ingredients.items() recursive %}
+                {% set building_qpm = (60 / ingredient.ingredient.speed) * ingredient.ingredient.quantity %}
                 <li>
                     <a href="{{ url_for('components.component_by_id', id=ingredient.ingredient.id) }}">
-                        {{ ingredient.ingredient.name|title }}</a> ({{ ingredient.ingredient.made_in|title }}) - {{ "%.2f"|format(ingredient.qpm) }}
+                        {{ ingredient.ingredient.name|title }}</a> ({{ ingredient.ingredient.made_in|title }}) - {{ "%.2f"|format(ingredient.qpm) }} per min - {{ "%.2f"|format(ingredient.qpm/building_qpm) }} buildings
                 </li>
 
                 {% if ingredient.ingredients %}

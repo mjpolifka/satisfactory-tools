@@ -50,6 +50,7 @@ the code seems quite readable to me (but of course it would)
 - need to create a list of what buildings you need to create the factory
 - get an error when I try and recursively get ingredients for miner items
     - I'm trying to click on the raw material... what _should_ it show me?
+    - there's also a check in build_ingredients for what building it comes from
 - is there a way to make this callable as an api without decoupling the templates?
     - I think there was, it's in the pluralsight that I hated
     - if not, start considering when is a good time to refactor this into frontend/backend
@@ -57,7 +58,6 @@ the code seems quite readable to me (but of course it would)
 ### Thoughts
 - if I create an "order" column in the Ingredients in db, I can choose how they appear
 - I could add power requirements, I bet that will be important soon
-- in the component template, calculate how many of the main building you need for the qpm entered
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~
@@ -73,3 +73,4 @@ the code seems quite readable to me (but of course it would)
 - ~~need to start calculating items per minute, I'm guessing it's a function shared by everything~~
     - ~~qpm; did it mostly in my template (in fact, I should move the last remnant - oh, it's needed)~~
 - ~~could use some styling, probably bootstrap~~
+- ~~in the component template, calculate how many of the main building you need for the qpm entered~~

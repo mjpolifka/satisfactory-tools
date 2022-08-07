@@ -1,2 +1,5 @@
 Ignored/*
 database.db
+__pycache__/*
+satisfactory_tools/__pycache__/*
+satisfactory_tools/models/__pycache__/*

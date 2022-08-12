@@ -39,6 +39,7 @@ the code seems quite readable to me (but of course it would)
 ## TODO List
 
 ### In-Progress
+- adding a hand-crafting calculator b/c it should be easy and it's handy
 - ~~still needs a lot of help with styling, maybe a color scheme~~
     - ~~index page is decent~~
     - component page needs a lot of help
@@ -58,6 +59,10 @@ the code seems quite readable to me (but of course it would)
 ### Thoughts
 - if I create an "order" column in the Ingredients in db, I can choose how they appear
 - I could add power requirements, I bet that will be important soon
+- I need a place on here I can take notes
+    - It would be nice if it could follow me from page to page
+        - It could be a menu item that's closed when I get to a new page
+    - Need to remember how much of a resource I have available, or how many items are coming down this conveyor
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

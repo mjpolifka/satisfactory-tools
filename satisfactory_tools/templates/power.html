@@ -3,8 +3,55 @@
 {% block title %} - Power Calculator{% endblock %}
 
 
+{% set power_type = data['power_type'] %}
+{% set oil_incoming = data['oil_incoming'] %}
+
+
 {% block content %}
 <h1>Hello Power</h1>
+<form method="get">
+    <label for="power_type">Power Type:</label>
+    <select name="power_type" id="power_type">
+        <option value="oil" {% if power_type == 'oil' %}selected{% endif %}>Oil</option>
+        <option value="coal" {% if power_type == 'coal' %}selected{% endif %}>Coal</option>
+        <option value="bio" {% if power_type == 'bio' %}selected{% endif %}>Bio</option>
+    </select>
+    <input type="submit" value="Set Power Type">
+</form>
+<hr>
 
+
+{% if power_type == 'oil' %}
+    <h3>Oil Power</h3>
+    <form method="get">
+        <label for="oil_incoming">Qty Crude Oil:</label>
+        <input name="oil_incoming" id="oil_incoming" type="number" min="1" step="1" required>
+        <input type="hidden" name="power_type" id="power_type" value="oil">
+        <input type="submit" value="Calculate">
+    </form>
+    {% if oil_incoming %}
+        <div style="padding-top: 20px">
+            {% set refineries = oil_incoming|int / 60 %}
+            {% set fuel = refineries * 40 %}
+            {% set power_plants = fuel / 12 %}
+            {% set power_generated = power_plants * 150 %}
+            <p>Incoming Crude: {{ oil_incoming }}</p>
+            <p>Refineries Supported: {{ "%.2f"|format(refineries) }}</p>
+            <p>Fuel Refined: {{ "%.2f"|format(fuel) }}</p>
+            <p>Power Plants Supported: {{ "%.2f"|format(power_plants) }}</p>
+            <p>Power Generated: {{ "%.0f"|format(power_generated) }} MW</p>
+        </div>
+    {% endif %}
+
+
+{% elif power_type == 'coal' %}
+    <h3>Coal Power not yet implemented</h3>
+
+
+{% elif power_type == 'bio' %}
+    <h3>Biofuel power not yet implemented</h3>
+
+
+{% endif %}
 
 {% endblock %}

@@ -25,9 +25,9 @@
     {% if power_type == 'oil' %}
         <h3>Oil Power</h3>
         <form method="get">
+            <input type="hidden" name="power_type" id="power_type" value="oil">
             <label for="oil_incoming">Qty Crude Oil:</label>
             <input name="oil_incoming" id="oil_incoming" type="number" min="1" step="1" required>
-            <input type="hidden" name="power_type" id="power_type" value="oil">
             <input type="submit" value="Calculate">
         </form>
         {% if oil_incoming %}

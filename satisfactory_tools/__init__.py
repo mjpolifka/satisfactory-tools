@@ -9,8 +9,9 @@ def create_app(test_config=None):
     
     db.init_app(app)
     
-    from satisfactory_tools import components, init_db
+    from satisfactory_tools import components, init_db, handcraft
     app.register_blueprint(components.bp)
     app.register_blueprint(init_db.bp)
+    app.register_blueprint(handcraft.bp)
     
     return app

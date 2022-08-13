@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} - Hand Craft Calculator{% endblock %}
+
+{% set single_input = data['single_input'] %}
+{% set single_output = data['single_output'] %}
+{% set number_of_ticks = data['number_of_ticks'] %}
+
+{% block content %}
+<h1>One Input</h1>
+<form method="get">
+    <label for="single_input">Input Qty:</label>
+    <input name="single_input" id="single_input" type="number" value="{{ single_input }}" min="1" step="1" required>
+    <label for="single_output">Output Qty:</label>
+    <input name="single_output" id="single_output" type="number" value="{{ single_output }}" min="1" step="1" required>
+    <label for="number_of_ticks">Number of Ticks:</label>
+    <input name="number_of_ticks" id="number_of_ticks" type="number" value="{{ number_of_ticks }}" min="1" step="1" required>
+    <input type="submit" value="Calculate">
+</form>
+Cycles Remaining: {{ data['cycles_remaining'] }}  --  Time Remaining: {{ data['time_remaining'] }} minutes
+
+<h1>Two Inputs</h1>
+<form method="get">
+    <label for="double_input_1">Input Qty:</label>
+    <input name="double_input_1" id="double_input_1" type="number" min="1" step="1" required>
+    <label for="double_input_2">Input Qty:</label>
+    <input name="double_input_2" id="double_input_2" type="number" min="1" step="1" required>
+    <input type="submit" value="Calculate">
+</form>
+
+
+{% endblock %}

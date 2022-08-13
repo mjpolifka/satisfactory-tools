@@ -1,5 +1,5 @@
-from turtle import circle, speed
-from unicodedata import name
+# from turtle import circle, speed
+# from unicodedata import name
 from flask import Blueprint, render_template
 from satisfactory_tools.components import component_by_id
 

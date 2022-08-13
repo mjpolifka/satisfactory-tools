@@ -24,6 +24,28 @@
         
         <hr>
 
+
+
+        <h3>Ingredients for {{ "%.0f"|format(qpm) }} by hand:</h3>
+
+        <table>
+            {% for key, ingredient in ingredients.items() %}
+                <tr>
+                    <td style="text-align: right">
+                        <a href="{{ url_for('components.component_by_id', id=ingredient.ingredient.id) }}">
+                            {{ ingredient.ingredient.name|title }}</a>
+                    </td>
+                    <td style="padding-left: 15px">
+                        {{ "%.0f"|format(ingredient.qpm) }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <hr>
+
+
+
         <h3>Ingredients for {{ "%.2f"|format(qpm) }} per minute:</h3>
         
         <ul>

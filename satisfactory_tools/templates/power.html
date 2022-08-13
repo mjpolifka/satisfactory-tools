@@ -34,11 +34,13 @@
             <div style="padding-top: 20px">
                 {% set refineries = oil_incoming|int / 60 %}
                 {% set fuel = refineries * 40 %}
+                {% set polymer_resin = refineries * 30 %}
                 {% set power_plants = fuel / 12 %}
                 {% set power_generated = power_plants * 150 %}
                 <p>Incoming Crude: {{ oil_incoming }}</p>
                 <p>Refineries Supported: {{ "%.2f"|format(refineries) }}</p>
                 <p>Fuel Refined: {{ "%.2f"|format(fuel) }}</p>
+                <p>Polymer Resin Refined: {{ "%.2f"|format(polymer_resin) }}</p>
                 <p>Power Plants Supported: {{ "%.2f"|format(power_plants) }}</p>
                 <p>Power Generated: {{ "%.0f"|format(power_generated) }} MW</p>
             </div>

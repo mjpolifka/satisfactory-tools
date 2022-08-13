@@ -40,6 +40,10 @@ the code seems quite readable to me (but of course it would)
 
 ### In-Progress
 - adding a hand-crafting calculator b/c it should be easy and it's handy
+- adding a power caluclator for building power plants
+    - implement coal
+    - implement bio
+    - add buildings to model so I can calculate materials required to build the plant (can also do this for components)
 - ~~still needs a lot of help with styling, maybe a color scheme~~
     - ~~index page is decent~~
     - component page needs a lot of help

@@ -5,6 +5,7 @@
 {% set single_input = data['single_input'] %}
 {% set single_output = data['single_output'] %}
 {% set number_of_ticks = data['number_of_ticks'] %}
+{% set single_qty = data['single_qty'] %}
 
 {% block content %}
 <h1>One Input</h1>
@@ -15,6 +16,8 @@
     <input name="single_output" id="single_output" type="number" value="{{ single_output }}" min="1" step="1" required>
     <label for="number_of_ticks">Number of Ticks:</label>
     <input name="number_of_ticks" id="number_of_ticks" type="number" value="{{ number_of_ticks }}" min="1" step="1" required>
+    <label for="single_qty">Qty Incoming:</label>
+    <input name="single_qty" id="single_qty" type="number" value="{{ single_qty }}" min="1" step="1" required>
     <input type="submit" value="Calculate">
 </form>
 Cycles Remaining: {{ data['cycles_remaining'] }}  --  Time Remaining: {{ data['time_remaining'] }} minutes

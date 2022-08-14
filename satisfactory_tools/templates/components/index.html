@@ -12,15 +12,21 @@
                     {% if component.made_in == building %}
                         <li class="my-list-item">
                             {% if component.made_in not in ("by_hand", "miner") %}
-                            <h3><a class="my-link" href="{{ url_for('components.component_by_id', id=component.id) }}">{{ component.name|title }}</a> qty {{ component.quantity }}</h3>
+                            <h3>
+                                <a class="my-link" href="{{ url_for('components.component_by_id', id=component.id) }}">{{ component.name|title }}</a> 
+                                <!-- qty {{ component.quantity }} -->
+                            </h3>
                             {% else %}
-                            <h3>{{ component.name|title }} qty {{ component.quantity }}</h3>
+                            <h3>
+                                {{ component.name|title }}
+                                 <!-- qty {{ component.quantity }} -->
+                            </h3>
                             {% endif %}
-                            <ul>
+                            <!-- <ul>
                                 {% for ingredient in component.ingredient_list %}
                                     <li>{{ ingredient.ingredient.name|title }} qty {{ ingredient.quantity }}</li>
                                 {% endfor %}
-                            </ul>
+                            </ul> -->
                         </li>
                     {% endif %}
                 {% endfor %}

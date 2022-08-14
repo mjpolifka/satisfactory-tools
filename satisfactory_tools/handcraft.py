@@ -18,7 +18,10 @@ def handcraft():
         single_qty = 1
     
     cycles_remaining = float((int(single_input) / int(single_output) * int(single_qty)))
-    time_remaining = (0.25 * int(number_of_ticks) * cycles_remaining) / 60
+    seconds = int(0.25 * int(number_of_ticks) * cycles_remaining)
+    minutes_remaining = int(seconds / 60)
+    seconds_remaining = seconds - (minutes_remaining * 60)
+    time_remaining = (minutes_remaining, seconds_remaining)
 
     data = {
         "single_input": single_input,

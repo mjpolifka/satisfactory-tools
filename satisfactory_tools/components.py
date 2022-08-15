@@ -66,11 +66,11 @@ def build_buildings(component, qpm, building_list):
         existing = building_list[component.name]
         num_buildings = existing["num_buildings"] + qpm / ( ( 60 / component.speed ) * component.quantity )
         building_list.update({component.name: {"made_in": component.made_in, "num_buildings": num_buildings}})
-        print("Already exists: " + component.name + " - " + str(qpm / ( ( 60 / component.speed ) * component.quantity )) + " (previous: " + str(existing["num_buildings"]) + ")")
+        # print("Already exists: " + component.name + " - " + str(qpm / ( ( 60 / component.speed ) * component.quantity )) + " (previous: " + str(existing["num_buildings"]) + ")")
     except KeyError:
         num_buildings = qpm / ( ( 60 / component.speed ) * component.quantity )
         building_list.update({component.name: {"made_in": component.made_in,"num_buildings": num_buildings}})
-        print("Did not exist: " + component.name + " - " + str(num_buildings))
+        # print("Did not exist: " + component.name + " - " + str(num_buildings))
     
     for ingredient in component.ingredient_list:
         ingredient_component = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
@@ -80,9 +80,16 @@ def build_buildings(component, qpm, building_list):
     return building_list
 
 def sort_buildings(building_list):
+    master_dict = {}
     # get full list of building names
     # maybe make it manual so I can have whatever sorting I want?
+    building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"]
     # for loop through this list
         # if there's a match, add it to global dict
+    for building in building_options:
+        for component in building_list:
+            print("Building: " + building + " | Component: " + building_list[component]["made_in"])
+            if building == building_list[component]["made_in"]:
+                master_dict.update({component: building_list[component]})
     # return
-    return building_list
+    return master_dict

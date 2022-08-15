@@ -1,3 +1,4 @@
+import math
 from flask import Blueprint, render_template, request
 from satisfactory_tools.models import Ingredient
 
@@ -24,7 +25,7 @@ def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
     qpm = (60 / component.speed) * component.quantity
     ingredients = build_ingredients(component, qpm)
-    buildings = sort_buildings(build_buildings(component, qpm, {}))
+    (buildings, total_buildings) = sort_buildings(build_buildings(component, qpm, {}))
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
@@ -32,7 +33,8 @@ def component_by_id(id):
                             component=component,
                             qpm = qpm,
                             ingredients = ingredients,
-                            buildings = buildings)
+                            buildings = buildings,
+                            total_buildings = total_buildings)
 
 @bp.route("/test")
 def test():
@@ -81,15 +83,17 @@ def build_buildings(component, qpm, building_list):
 
 def sort_buildings(building_list):
     master_dict = {}
+    total_buildings = {}
     # get full list of building names
     # maybe make it manual so I can have whatever sorting I want?
     building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"]
     # for loop through this list
         # if there's a match, add it to global dict
     for building in building_options:
+        total_buildings.update({building: 0})
         for component in building_list:
-            print("Building: " + building + " | Component: " + building_list[component]["made_in"])
             if building == building_list[component]["made_in"]:
                 master_dict.update({component: building_list[component]})
+                total_buildings.update({building: total_buildings[building] + math.ceil(building_list[component]["num_buildings"])})
     # return
-    return master_dict
+    return (master_dict, total_buildings)

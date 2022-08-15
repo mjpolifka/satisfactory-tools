@@ -24,7 +24,7 @@ def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
     qpm = (60 / component.speed) * component.quantity
     ingredients = build_ingredients(component, qpm)
-    buildings = build_buildings(component, qpm, {})
+    buildings = sort_buildings(build_buildings(component, qpm, {}))
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
@@ -39,21 +39,6 @@ def test():
     return "Test complete"
 
 def build_ingredients(component, qpm):
-    # To get a full list of components and buildings, I'll have to keep track of it separately
-    # I can do build_ingredients(component, qpm, first=False): 
-    # Then if(first): (~~create empty tracking_dict~~)
-    # And if(first): (return (built_ingredients, tracking_dict)) else: (return built_ingredients)
-    # Each time I parse an ingredient and calculate a qpm, do 
-    #   tracking_dict.update({ingredient: tracking_dict.ingredient + quantity, building: tracking_dict.building + ~~calculate percent of building~~})
-    # Send tracking_dict in render_template() and render it in the template
-
-    # Or, above I can create empty_tracking_dict = {~~etc~~}
-    # build_ingredients(component, qpm, tracking_dict)
-    # And call build_ingredients(component, qpm, empty_tracking_dict) above
-    # Below, call build_ingredients(component, qpm, tracking_dict)
-    # 
-    # I still need to calculate percent_of_building as I go
-    
     if component.made_in not in ("by_hand, miner, oil extractor, water extractor"):
         ingredients = component.ingredient_list
         built_ingredients = {}
@@ -92,4 +77,12 @@ def build_buildings(component, qpm, building_list):
         new_qpm = (ingredient.quantity/component.quantity) * qpm
         building_list = build_buildings(ingredient_component, new_qpm, building_list)
 
+    return building_list
+
+def sort_buildings(building_list):
+    # get full list of building names
+    # maybe make it manual so I can have whatever sorting I want?
+    # for loop through this list
+        # if there's a match, add it to global dict
+    # return
     return building_list

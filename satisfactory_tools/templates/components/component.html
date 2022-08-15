@@ -66,13 +66,16 @@
 
         <hr>
 
-        <ul>
-            {% for building in buildings.keys() %}
-            <li>
-                {{ buildings[building]["made_in"]|title }} - {{ building|title }} - {{ "%.2f"|format(buildings[building]["num_buildings"]) }}
-            </li>
+        <table>
+            {% for component in buildings.keys() %}
+            <tr>
+                <td>{{ buildings[component]["made_in"]|title }}</td>
+                <td style="padding-inline: 15px">{{ component|title }}</td>
+                <td>{{ "%.2f"|format(buildings[component]["num_buildings"]) }}</td>
+            </tr>
                 
             {% endfor %}
-        </ul>
+        </table>
+        
 
 {% endblock %}

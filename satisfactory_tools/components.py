@@ -24,7 +24,7 @@ def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
     qpm = (60 / component.speed) * component.quantity
     ingredients = build_ingredients(component, qpm)
-    buildings = build_buildings(component,qpm)
+    buildings = build_buildings(component, qpm, {})
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
@@ -76,14 +76,16 @@ def build_ingredients(component, qpm):
     else:
         return 0
 
-def build_buildings(component, qpm, building_list={}):
+def build_buildings(component, qpm, building_list):
     try:
         existing = building_list[component.name]
         num_buildings = existing["num_buildings"] + qpm / ( ( 60 / component.speed ) * component.quantity )
         building_list.update({component.name: {"made_in": component.made_in, "num_buildings": num_buildings}})
+        print("Already exists: " + component.name + " - " + str(qpm / ( ( 60 / component.speed ) * component.quantity )) + " (previous: " + str(existing["num_buildings"]) + ")")
     except KeyError:
         num_buildings = qpm / ( ( 60 / component.speed ) * component.quantity )
         building_list.update({component.name: {"made_in": component.made_in,"num_buildings": num_buildings}})
+        print("Did not exist: " + component.name + " - " + str(num_buildings))
     
     for ingredient in component.ingredient_list:
         ingredient_component = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()

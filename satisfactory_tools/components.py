@@ -24,13 +24,15 @@ def component_by_id(id):
     component = Ingredient.query.filter_by(id=id).first()
     qpm = (60 / component.speed) * component.quantity
     ingredients = build_ingredients(component, qpm)
+    buildings = build_buildings(component,qpm)
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
     return render_template("components/component.html",
                             component=component,
                             qpm = qpm,
-                            ingredients = ingredients)
+                            ingredients = ingredients,
+                            buildings = buildings)
 
 @bp.route("/test")
 def test():
@@ -73,3 +75,19 @@ def build_ingredients(component, qpm):
         return built_ingredients
     else:
         return 0
+
+def build_buildings(component, qpm, building_list={}):
+    try:
+        existing = building_list[component.name]
+        num_buildings = existing["num_buildings"] + qpm / ( ( 60 / component.speed ) * component.quantity )
+        building_list.update({component.name: {"made_in": component.made_in, "num_buildings": num_buildings}})
+    except KeyError:
+        num_buildings = qpm / ( ( 60 / component.speed ) * component.quantity )
+        building_list.update({component.name: {"made_in": component.made_in,"num_buildings": num_buildings}})
+    
+    for ingredient in component.ingredient_list:
+        ingredient_component = Ingredient.query.filter_by(id=ingredient.ingredient.id).first()
+        new_qpm = (ingredient.quantity/component.quantity) * qpm
+        building_list = build_buildings(ingredient_component, new_qpm, building_list)
+
+    return building_list

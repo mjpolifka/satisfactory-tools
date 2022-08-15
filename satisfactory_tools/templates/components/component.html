@@ -64,4 +64,15 @@
             {% endfor %}
         </ul>
 
+        <hr>
+
+        <ul>
+            {% for building in buildings.keys() %}
+            <li>
+                {{ buildings[building]["made_in"]|title }} - {{ building|title }} - {{ buildings[building]["num_buildings"] }}
+            </li>
+                
+            {% endfor %}
+        </ul>
+
 {% endblock %}

@@ -69,7 +69,7 @@
         <ul>
             {% for building in buildings.keys() %}
             <li>
-                {{ buildings[building]["made_in"]|title }} - {{ building|title }} - {{ buildings[building]["num_buildings"] }}
+                {{ buildings[building]["made_in"]|title }} - {{ building|title }} - {{ "%.2f"|format(buildings[building]["num_buildings"]) }}
             </li>
                 
             {% endfor %}

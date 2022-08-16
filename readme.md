@@ -39,20 +39,21 @@ the code seems quite readable to me (but of course it would)
 ## TODO List
 
 ### In-Progress
-- adding a hand-crafting calculator b/c it should be easy and it's handy
-- adding a power caluclator for building power plants
-    - implement coal
-    - implement bio
-    - add buildings to model so I can calculate materials required to build the plant (can also do this for components)
-- ~~still needs a lot of help with styling, maybe a color scheme~~
-    - ~~index page is decent~~
-    - component page needs a lot of help
 - haven't figured out the 'by_hand' items yet
     - just add them as if they come from a miner
     - give them a fake time if you have to until we figure out how to detect it
+- ~~need to create a list of what buildings you need to create the factory~~
+    - need instead of "miner" to know how much raw material I need
+    - probably not same with water extractor, etc - it's because miners have different mk's
+- adding a hand-crafting calculator b/c it should be easy and it's handy
+    - need to implement 2-ingredient (and 3, 4, etc)
+    - can I maybe just leave some ingredients blank?
+- adding a power caluclator for building power plants
+    - add buildings to model so I can calculate materials required to build the plant (can also do this for components)
+    - implement coal
+    - implement bio
 
 ### Planning
-- need to create a list of what buildings you need to create the factory
 - get an error when I try and recursively get ingredients for miner items
     - I'm trying to click on the raw material... what _should_ it show me?
     - there's also a check in build_ingredients for what building it comes from
@@ -83,3 +84,6 @@ the code seems quite readable to me (but of course it would)
     - ~~qpm; did it mostly in my template (in fact, I should move the last remnant - oh, it's needed)~~
 - ~~could use some styling, probably bootstrap~~
 - ~~in the component template, calculate how many of the main building you need for the qpm entered~~
+- ~~still needs a lot of help with styling, maybe a color scheme~~
+    - ~~index page is decent~~
+    - ~~component page needs a lot of help~~

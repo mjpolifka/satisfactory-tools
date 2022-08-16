@@ -68,12 +68,23 @@
 
         <table>
             {% for component in buildings.keys() %}
-            <tr>
-                <td>{{ buildings[component]["made_in"]|title }}</td>
-                <td style="padding-inline: 15px">{{ component|title }}</td>
-                <td>{{ "%.2f"|format(buildings[component]["num_buildings"]) }}</td>
-            </tr>
-                
+                <tr>
+                    <td>{{ buildings[component]["made_in"]|title }}</td>
+                    <td style="padding-inline: 15px">{{ component|title }}</td>
+                    <td>{{ "%.2f"|format(buildings[component]["num_buildings"]) }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% set building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"] %}
+        <table style="margin-top: 30px">
+            {% for building in building_options %}
+                {% if total_buildings[building] != 0 %}
+                    <tr>
+                        <td>{{ building|title }}</td>
+                        <td style="padding-inline: 15px">{{ total_buildings[building] }}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </table>
         

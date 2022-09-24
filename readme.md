@@ -68,6 +68,10 @@ the code seems quite readable to me (but of course it would)
     - It would be nice if it could follow me from page to page
         - It could be a menu item that's closed when I get to a new page
     - Need to remember how much of a resource I have available, or how many items are coming down this conveyor
+- I need a "byproduct" field for Ingredient and to show it on the view
+    - Would be sick if I could choose from the various ways to dispose of it and it would build the factory out
+- I think we're big enough for a search box now
+- Perhaps a drop-down to select the building to filter
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

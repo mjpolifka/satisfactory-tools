@@ -76,7 +76,6 @@
             {% endfor %}
         </table>
 
-        {% set building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"] %}
         <table style="margin-top: 30px">
             {% for building in building_options %}
                 {% if total_buildings[building] != 0 %}

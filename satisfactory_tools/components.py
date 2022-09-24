@@ -6,13 +6,7 @@ bp = Blueprint("components", __name__)
 
 @bp.route("/")
 def index():
-    # create a list of all possible buildings to create headings
-    building_list = []
-    all_components = Ingredient.query.all()
-    for component in all_components:
-        if component.made_in not in building_list:
-            building_list.append(component.made_in)
-
+    building_list = get_building_list()
     components = Ingredient.query.order_by(Ingredient.id).all()
     return render_template(
         "components/index.html",
@@ -34,7 +28,8 @@ def component_by_id(id):
                             qpm = qpm,
                             ingredients = ingredients,
                             buildings = buildings,
-                            total_buildings = total_buildings)
+                            total_buildings = total_buildings,
+                            building_options = get_building_list())
 
 @bp.route("/test")
 def test():
@@ -86,14 +81,25 @@ def sort_buildings(building_list):
     total_buildings = {}
     # get full list of building names
     # maybe make it manual so I can have whatever sorting I want?
-    building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"]
+    # But I need this list in the template as well, it should be outside of here
+    #building_options = ["manufacturer", "assembler", "constructor", "foundry", "refinery", "smelter", "miner", "water extractor", "oil extractor"]
+    building_options = get_building_list()
     # for loop through this list
         # if there's a match, add it to global dict
     for building in building_options:
-        total_buildings.update({building: 0})
+        total_buildings.update({building: 0}) # an explanation would be helpful
         for component in building_list:
             if building == building_list[component]["made_in"]:
                 master_dict.update({component: building_list[component]})
                 total_buildings.update({building: total_buildings[building] + math.ceil(building_list[component]["num_buildings"])})
     # return
     return (master_dict, total_buildings)
+
+def get_building_list():
+    building_list = []
+    all_components = Ingredient.query.all()
+    for component in all_components:
+        if component.made_in not in building_list:
+            building_list.append(component.made_in)
+    
+    return building_list

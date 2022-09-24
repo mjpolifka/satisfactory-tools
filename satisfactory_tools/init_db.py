@@ -115,9 +115,11 @@ def init_db():
     assembly_director_system = Ingredient(name='assembly director system', made_in=made_in, speed=80, quantity=1)
     heat_sink = Ingredient(name='heat sink', made_in=made_in, speed=8, quantity=1)
     electromagnetic_control_rod = Ingredient(name='electromagnetic control rod', made_in=made_in, speed=30, quantity=2)
+    compacted_coal = Ingredient(name='compacted coal', made_in=made_in, speed=12, quantity=5)
     list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating, versatile_framework, black_powder, 
                  encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board,
-                 alclad_aluminum_sheet, assembly_director_system, heat_sink, electromagnetic_control_rod])
+                 alclad_aluminum_sheet, assembly_director_system, heat_sink, electromagnetic_control_rod,
+                 compacted_coal])
 
     # Manufacturer
     made_in = 'manufacturer'
@@ -134,9 +136,12 @@ def init_db():
     iodine_infused_filter = Ingredient(name='iodine infused filter', made_in=made_in, speed=16, quantity=1)
     uranium_fuel_rod = Ingredient(name='uranium fuel rod', made_in=made_in, speed=150, quantity=1)
     magnetic_field_generator = Ingredient(name='magnetic field generator', made_in=made_in, speed=120, quantity=2)
+    turbo_motor = Ingredient(name='turbo motor', made_in=made_in, speed=32, quantity=1)
+    thermal_propulsion_rocket = Ingredient(name='thermal propulsion rocket', made_in=made_in, speed=120, quantity=2)
     list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit, 
                  high_speed_connector, supercomputer, radio_control_unit, classic_battery, gas_filter,
-                 iodine_infused_filter, uranium_fuel_rod, magnetic_field_generator])
+                 iodine_infused_filter, uranium_fuel_rod, magnetic_field_generator, turbo_motor,
+                 thermal_propulsion_rocket])
 
     # Blender
     made_in = 'blender'
@@ -227,6 +232,8 @@ def init_db():
     Recipe(component=heat_sink, ingredient=copper_sheet, quantity=3)
     Recipe(component=electromagnetic_control_rod, ingredient=stator, quantity=3)
     Recipe(component=electromagnetic_control_rod, ingredient=ai_limiter, quantity=4)
+    Recipe(component=compacted_coal, ingredient=coal, quantity=5)
+    Recipe(component=compacted_coal, ingredient=sulfur, quantity=5)
 
     # Manufacturer
     Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)
@@ -273,6 +280,14 @@ def init_db():
     Recipe(component=magnetic_field_generator, ingredient=versatile_framework, quantity=5)
     Recipe(component=magnetic_field_generator, ingredient=electromagnetic_control_rod, quantity=2)
     Recipe(component=magnetic_field_generator, ingredient=battery, quantity=10)
+    Recipe(component=turbo_motor, ingredient=cooling_system, quantity=4)
+    Recipe(component=turbo_motor, ingredient=radio_control_unit, quantity=2)
+    Recipe(component=turbo_motor, ingredient=motor, quantity=4)
+    Recipe(component=turbo_motor, ingredient=rubber, quantity=24)
+    Recipe(component=thermal_propulsion_rocket, ingredient=modular_engine, quantity=5)
+    Recipe(component=thermal_propulsion_rocket, ingredient=turbo_motor, quantity=2)
+    Recipe(component=thermal_propulsion_rocket, ingredient=cooling_system, quantity=6)
+    Recipe(component=thermal_propulsion_rocket, ingredient=fused_modular_frame, quantity=2)
 
     # Blender
     Recipe(component=battery, ingredient=sulfuric_acid, quantity=2.5)

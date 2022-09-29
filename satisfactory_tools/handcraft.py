@@ -7,9 +7,6 @@ def handcraft():
     single_input = request.args.get("single_input")
     if not single_input:
         single_input = 1
-    single_output = request.args.get("single_output")
-    if not single_output:
-        single_output = 1
     number_of_ticks = request.args.get("number_of_ticks")
     if not number_of_ticks:
         number_of_ticks = 1
@@ -17,7 +14,7 @@ def handcraft():
     if not single_qty:
         single_qty = 1
     
-    cycles_remaining = float((int(single_input) / int(single_output) * int(single_qty)))
+    cycles_remaining = float(int(single_qty) / int(single_input))
     seconds = int(0.25 * int(number_of_ticks) * cycles_remaining)
     minutes_remaining = int(seconds / 60)
     seconds_remaining = seconds - (minutes_remaining * 60)
@@ -25,7 +22,6 @@ def handcraft():
 
     data = {
         "single_input": single_input,
-        "single_output": single_output,
         "number_of_ticks": number_of_ticks,
         "single_qty": single_qty,
         "cycles_remaining": cycles_remaining,

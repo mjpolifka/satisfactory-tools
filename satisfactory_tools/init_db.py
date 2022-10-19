@@ -30,8 +30,9 @@ def init_db():
     caterium_ore = Ingredient(name='caterium', made_in=made_in, speed=1, quantity=1)
     bauxite = Ingredient(name='bauxite', made_in=made_in, speed=1, quantity=1)
     uranium = Ingredient(name='uranium', made_in=made_in, speed=1, quantity=1)
+    uranium_waste = Ingredient(name='uranium waste', made_in=made_in, speed=60, quantity=10)
     list.extend([iron_ore, copper_ore, limestone, coal, raw_quartz, sulfur, caterium_ore,
-                 bauxite, uranium])
+                 bauxite, uranium, uranium_waste])
 
     # Oil Extractor
     made_in = 'oil extractor'
@@ -89,8 +90,9 @@ def init_db():
     quickwire = Ingredient(name='quickwire', made_in=made_in, speed=5, quantity=5)
     aluminum_casing = Ingredient(name='aluminum casing', made_in=made_in, speed=2, quantity=2)
     empty_canister = Ingredient(name='empty canister', made_in=made_in, speed=4, quantity=4)
+    copper_powder = Ingredient(name='copper powder', made_in=made_in, speed=6, quantity=5)
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
-                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister])
+                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder])
     
     #biomass is made from ingredients harvested by hand
         #so what?  Works fine for the miner; just give it a fake time and remember it needs to be fixed
@@ -116,10 +118,12 @@ def init_db():
     heat_sink = Ingredient(name='heat sink', made_in=made_in, speed=8, quantity=1)
     electromagnetic_control_rod = Ingredient(name='electromagnetic control rod', made_in=made_in, speed=30, quantity=2)
     compacted_coal = Ingredient(name='compacted coal', made_in=made_in, speed=12, quantity=5)
+    encased_plutonium_cell = Ingredient(name='encased plutonium cell', made_in=made_in, speed=12, quantity=1)
+    pressure_conversion_cube = Ingredient(name='pressure conversion cube', made_in=made_in, speed=60, quantity=1)
     list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating, versatile_framework, black_powder, 
                  encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board,
                  alclad_aluminum_sheet, assembly_director_system, heat_sink, electromagnetic_control_rod,
-                 compacted_coal])
+                 compacted_coal, encased_plutonium_cell, pressure_conversion_cube])
 
     # Manufacturer
     made_in = 'manufacturer'
@@ -138,10 +142,11 @@ def init_db():
     magnetic_field_generator = Ingredient(name='magnetic field generator', made_in=made_in, speed=120, quantity=2)
     turbo_motor = Ingredient(name='turbo motor', made_in=made_in, speed=32, quantity=1)
     thermal_propulsion_rocket = Ingredient(name='thermal propulsion rocket', made_in=made_in, speed=120, quantity=2)
+    plutonium_fuel_rod = Ingredient(name='plutonium fuel rod', made_in=made_in, speed=240, quantity=1)
     list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit, 
                  high_speed_connector, supercomputer, radio_control_unit, classic_battery, gas_filter,
                  iodine_infused_filter, uranium_fuel_rod, magnetic_field_generator, turbo_motor,
-                 thermal_propulsion_rocket])
+                 thermal_propulsion_rocket, plutonium_fuel_rod])
 
     # Blender
     made_in = 'blender'
@@ -149,7 +154,16 @@ def init_db():
     cooling_system = Ingredient(name='cooling system', made_in=made_in, speed=10, quantity=1)
     fused_modular_frame = Ingredient(name='fused modular frame', made_in=made_in, speed=40, quantity=1)
     encased_uranium_cell = Ingredient(name='encased uranium cell', made_in=made_in, speed=12, quantity=5) #byproduct: 2 sulfuric acid
-    list.extend([battery, cooling_system, fused_modular_frame, encased_uranium_cell])
+    nitric_acid = Ingredient(name='nitric acid', made_in=made_in, speed=6, quantity=3)
+    non_fissile_uranium = Ingredient(name='non-fissile uranium', made_in=made_in, speed=24, quantity=20) #byproduct: 6 water
+    list.extend([battery, cooling_system, fused_modular_frame, encased_uranium_cell, nitric_acid, non_fissile_uranium])
+
+
+    # Particle Accelerator
+    made_in = 'particle_accelerator'
+    plutonium_pellet = Ingredient(name='plutonium pellet', made_in=made_in, speed=60, quantity=30)
+    nuclear_pasta = Ingredient(name='nuclear pasta', made_in=made_in, speed=120, quantity=1)
+    list.extend([plutonium_pellet, nuclear_pasta])
 
 
 
@@ -198,6 +212,7 @@ def init_db():
     Recipe(component=quickwire, ingredient=caterium_ingot, quantity=1)
     Recipe(component=aluminum_casing, ingredient=aluminum_ingot, quantity=3)
     Recipe(component=empty_canister, ingredient=plastic, quantity=2)
+    Recipe(component=copper_powder, ingredient=copper_ingot, quantity=30)
 
     # Assembler
     Recipe(component=reinforced_iron_plate, ingredient=iron_plate, quantity=6)
@@ -234,6 +249,10 @@ def init_db():
     Recipe(component=electromagnetic_control_rod, ingredient=ai_limiter, quantity=4)
     Recipe(component=compacted_coal, ingredient=coal, quantity=5)
     Recipe(component=compacted_coal, ingredient=sulfur, quantity=5)
+    Recipe(component=encased_plutonium_cell, ingredient=plutonium_pellet, quantity=2)
+    Recipe(component=encased_plutonium_cell, ingredient=concrete, quantity=4)
+    Recipe(component=pressure_conversion_cube, ingredient=fused_modular_frame, quantity=1)
+    Recipe(component=pressure_conversion_cube, ingredient=radio_control_unit, quantity=2)
 
     # Manufacturer
     Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)
@@ -288,6 +307,10 @@ def init_db():
     Recipe(component=thermal_propulsion_rocket, ingredient=turbo_motor, quantity=2)
     Recipe(component=thermal_propulsion_rocket, ingredient=cooling_system, quantity=6)
     Recipe(component=thermal_propulsion_rocket, ingredient=fused_modular_frame, quantity=2)
+    Recipe(component=plutonium_fuel_rod, ingredient=encased_plutonium_cell, quantity=30)
+    Recipe(component=plutonium_fuel_rod, ingredient=steel_beam, quantity=18)
+    Recipe(component=plutonium_fuel_rod, ingredient=electromagnetic_control_rod, quantity=6)
+    Recipe(component=plutonium_fuel_rod, ingredient=heat_sink, quantity=10)
 
     # Blender
     Recipe(component=battery, ingredient=sulfuric_acid, quantity=2.5)
@@ -303,6 +326,20 @@ def init_db():
     Recipe(component=encased_uranium_cell, ingredient=uranium, quantity=10)
     Recipe(component=encased_uranium_cell, ingredient=concrete, quantity=3)
     Recipe(component=encased_uranium_cell, ingredient=sulfuric_acid, quantity=8)
+    Recipe(component=nitric_acid, ingredient=nitrogen_gas, quantity=12)
+    Recipe(component=nitric_acid, ingredient=water, quantity=3)
+    Recipe(component=nitric_acid, ingredient=iron_plate, quantity=1)
+    Recipe(component=non_fissile_uranium, ingredient=uranium_waste, quantity=15)
+    Recipe(component=non_fissile_uranium, ingredient=silica, quantity=10)
+    Recipe(component=non_fissile_uranium, ingredient=nitric_acid, quantity=60)
+    Recipe(component=non_fissile_uranium, ingredient=sulfuric_acid, quantity=60)
+
+
+    # Particle Accelerator
+    Recipe(component=plutonium_pellet, ingredient=non_fissile_uranium, quantity=100)
+    Recipe(component=plutonium_pellet, ingredient=uranium_waste, quantity=25)
+    Recipe(component=nuclear_pasta, ingredient=copper_powder, quantity=200)
+    Recipe(component=nuclear_pasta, ingredient=pressure_conversion_cube, quantity=1)
 
 
     db.session.add_all(list)

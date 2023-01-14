@@ -57,3 +57,30 @@ body {
     color: rgb(120, 120, 120);
     list-style-type: none;
 }
+
+
+
+
+/* handcraft.html */
+
+.hand-craft-container {
+    margin: auto;
+    width: 50%;
+    /* text-align: center; */
+    padding-top: 50px;
+}
+
+.hand-craft-header {
+    text-align: right;
+    padding: 5px 5px 10px 5px;
+}
+
+.hand-craft-input {
+    width: 100px;
+}
+
+.hand-craft-submit {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

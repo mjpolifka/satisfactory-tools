@@ -8,29 +8,48 @@
 {% set single_qty = data['single_qty'] %}
 
 {% block content %}
-<!-- <h1>One Input</h1> -->
 <div class="container">
-    <form method="get" style="padding-top: 40px;">
-        <label for="single_input">Cost Each:</label>
-        <input name="single_input" id="single_input" type="number" value="{{ single_input }}" min="1" step="1" required>
-        <label for="single_qty">Qty Incoming:</label>
-        <input name="single_qty" id="single_qty" type="number" value="{{ single_qty }}" min="1" step="1" required>
-        <label for="number_of_ticks">Number of Ticks:</label>
-        <input name="number_of_ticks" id="number_of_ticks" type="number" value="{{ number_of_ticks }}" min="1" step="1" required>
-        <input type="submit" value="Calculate">
-    </form>
-    Cycles Remaining: {{ data['cycles_remaining'] }}  --  Time Remaining: {{ data['time_remaining'][0] }} minutes {{ data['time_remaining'][1] }} seconds
+    <div class="hand-craft-container">
+        <form method="get">
+            <table>
+                <tr class="hand-craft-row">
+                    <td class="hand-craft-header">
+                        <label for="single_input">Cost Each:</label>
+                    </td>
+                    <td>
+                        <input name="single_input" id="single_input" class="hand-craft-input" type="number" value="{{ single_input }}" min="1" step="1" required>
+                    </td>
+                <tr class="hand-craft-row">
+                    <td class="hand-craft-header">
+                        <label for="single_qty">Qty On Hand:</label>
+                    </td>
+                    <td>
+                        <input name="single_qty" id="single_qty"  class="hand-craft-input" type="number" value="{{ single_qty }}" min="1" step="1" required>
+                    </td>
+                </tr>
+                <tr class="hand-craft-row">
+                    <td class="hand-craft-header">
+                        <label for="number_of_ticks">Number of Ticks:</label>
+                    </td>
+                    <td>
+                        <input name="number_of_ticks" id="number_of_ticks"  class="hand-craft-input" type="number" value="{{ number_of_ticks }}" min="1" step="1" required>
+                    </td>
+                </tr>
+                    <td colspan="2">
+                        <input type="submit" value="Calculate" class="hand-craft-submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <table>
+            <tr>
+                <td>Cycles Remaining: {{ data['cycles_remaining'] }}</td>
+            </tr>
+            <tr>
+                <td>Time Remaining: {{ data['time_remaining'][0] }} minutes {{ data['time_remaining'][1] }} seconds</td>
+            </tr>
+        </table>
+    </div>
 </div>
-<!-- 
-<h1>Two Inputs</h1>
-<form method="get">
-    <label for="double_input_1">Input Qty:</label>
-    <input name="double_input_1" id="double_input_1" type="number" min="1" step="1" required>
-    <label for="double_input_2">Input Qty:</label>
-    <input name="double_input_2" id="double_input_2" type="number" min="1" step="1" required>
-    <input type="submit" value="Calculate">
-</form>
--->
-
 
 {% endblock %}

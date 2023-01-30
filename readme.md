@@ -72,6 +72,10 @@ the code seems quite readable to me (but of course it would)
     - Would be sick if I could choose from the various ways to dispose of it and it would build the factory out
 - I think we're big enough for a search box now
 - Perhaps a drop-down to select the building to filter
+- When starting NMS-Tools I realized I'm not handling any user-generated data, never doing any CRUDs.
+    - Can/should I get rid of the db entirely?
+    - The db gives me tools to handle the relationships for recipes though
+    - Which has me wondering if my analysis for building and ingredient counts can be simplified by using the db
 
 ### Complete
 - ~~Homepage (components/index.html | components.py/index) should group components by where they're made~~

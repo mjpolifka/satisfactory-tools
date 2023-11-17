@@ -1,6 +1,14 @@
 
 # Satisfactory Tools
 
+## About
+
+Various tools for the game "Satisfactory" by Coffee Stain Studios
+- Main Page: calculate full list of ingredients and buildings required for component manufacturing.  Click the component you want to manufacture, then adjust the "Qty Per Minute Desired" and click "Calculate".  By default, calculates one building at 100%.
+- Hand Crafting Calc: put in the hand crafting details, including how many ingredients in your inventory, and it will calculate how much time it will take.
+- Power Calc: only oil is implemented so far.  Enter how much oil you have available to process, and it will calculate: how many refineries you will need to refine fuel, how much waste is generated, how many power plants that fuel can support, and how much power you will generate.
+- Re-initialize Database: if you adjust the items in db.py, click this to import them into the sqlite database so they can be used.
+
 ## Installation:
 Must have Python installed, I used version 3.10  
 If you don't already have pipenv installed, run `pip install pipenv`

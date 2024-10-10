@@ -41,6 +41,9 @@ Added `python-dotenv` and a `.flaskenv` file to auto-set environment variables.
 - ~~need to create a list of what buildings you need to create the factory~~
     - need instead of "miner" to know how much raw material I need
     - probably not same with water extractor, etc - it's because miners have different mk's
+        - maybe a dropdown to select the Mk of miner you want to use; so far just remembering to scale in my head
+        - but it's also about purity, so will need 2 dropdowns
+        - now that purity is involved this is probably worth doing, that head-scaling is annoying
 - adding a hand-crafting calculator b/c it should be easy and it's handy
     - need to implement 2-ingredient (and 3, 4, etc)
     - can I maybe just leave some ingredients blank?
@@ -64,11 +67,13 @@ Added `python-dotenv` and a `.flaskenv` file to auto-set environment variables.
     - It would be nice if it could follow me from page to page
         - It could be a menu item that's closed when I get to a new page
     - Need to remember how much of a resource I have available, or how many items are coming down this conveyor
+        - A way to save what's coming down various conveyors and how many are being produced upstream would be very helpful, but maybe beyond the scope
 - I need a "byproduct" field for Ingredient and to show it on the view
     - Would be sick if I could choose from the various ways to dispose of it and it would build the factory out
 - I think we're big enough for a search box now
-- Perhaps a drop-down to select the building to filter
-- When starting NMS-Tools I realized I'm not handling any user-generated data, never doing any CRUDs.
+    - Perhaps a drop-down to select the building to filter
+    - Ctrl+F does a decent job tho
+- I realized I'm not handling any user-generated data, never doing any CRUDs.
     - Can/should I get rid of the db entirely?
     - The db gives me tools to handle the relationships for recipes though
     - Which has me wondering if my analysis for building and ingredient counts can be simplified by using the db

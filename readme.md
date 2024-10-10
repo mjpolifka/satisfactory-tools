@@ -17,31 +17,19 @@ In the terminal, navigate to the satisfactory-tools folder and run `pipenv insta
 
 You should be ready to run!
 
-## To run:
-Set environment variables (can skip if you're not editing the code):
-
-    Windows CMD:
-    - set FLASK_ENV=development
-    - set FLASK_APP=app.py
-
-    Windows PowerShell:
-    - $env:FLASK_ENV="development"
-    - $env:FLASK_APP="app.py"
-
-    Linux/Unix/(?Mac?):
-    - TODO
-
-Run `flask run` to start the development server.  
+## To Run:
+Run `flask run` to start the development server.
 In your browser, navigate to http://localhost:5000/init_db/ the first time you run it.
 
 Then, to access the app, navigate to http://localhost:5000/
 
+## Semi-Production Setup (Linux):
+I wrote the `sync-and-restart.sh` script awhile ago that runs a "production" server with `gunicorn`, but I never documented the process.  This is my reminder.
 
-## "Documentation" (basically just some notes for now):
+## Packages Used:
+Uses `flask` and `flask-sqlalchemy`, with an `sqlite` database
+Added `python-dotenv` and a `.flaskenv` file to auto-set environment variables.
 
-uses `flask` and `flask-sqlalchemy`, with an `sqlite` database  
-does more now, but not sure what to document 
-the code seems quite readable to me (but of course it would)
 
 
 ## TODO List

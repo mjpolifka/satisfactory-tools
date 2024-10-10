@@ -23,6 +23,7 @@ def component_by_id(id):
     if request.method == "POST":
         qpm = float(request.form["qpm"])
         ingredients = build_ingredients(component, qpm)
+        (buildings, total_buildings) = sort_buildings(build_buildings(component, qpm, {}))
     return render_template("components/component.html",
                             component=component,
                             qpm = qpm,

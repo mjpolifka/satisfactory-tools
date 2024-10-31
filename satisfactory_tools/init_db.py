@@ -135,7 +135,7 @@ def init_db():
     heavy_modular_frame = Ingredient(name='heavy modular frame', made_in=made_in, speed=30, quantity=1)
     computer = Ingredient(name='computer', made_in=made_in, speed=24, quantity=1)
     modular_engine = Ingredient(name='modular engine', made_in=made_in, speed=60, quantity=1)
-    adaptive_control_unit = Ingredient(name='adaptive control unit', made_in=made_in, speed=120, quantity=2)
+    adaptive_control_unit = Ingredient(name='adaptive control unit', made_in=made_in, speed=60, quantity=1)
     high_speed_connector = Ingredient(name='high speed connector', made_in=made_in, speed=16, quantity=1)
     supercomputer = Ingredient(name='supercomputer', made_in=made_in, speed=32, quantity=1)
     radio_control_unit = Ingredient(name='radio control unit', made_in=made_in, speed=48, quantity=2)
@@ -147,10 +147,11 @@ def init_db():
     turbo_motor = Ingredient(name='turbo motor', made_in=made_in, speed=32, quantity=1)
     thermal_propulsion_rocket = Ingredient(name='thermal propulsion rocket', made_in=made_in, speed=120, quantity=2)
     plutonium_fuel_rod = Ingredient(name='plutonium fuel rod', made_in=made_in, speed=240, quantity=1)
+    sam_fluctuator = Ingredient(name='sam fluctuator', made_in=made_in, speed=6, quantity=1)
     list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit, 
                  high_speed_connector, supercomputer, radio_control_unit, classic_battery, gas_filter,
                  iodine_infused_filter, uranium_fuel_rod, magnetic_field_generator, turbo_motor,
-                 thermal_propulsion_rocket, plutonium_fuel_rod])
+                 thermal_propulsion_rocket, plutonium_fuel_rod, sam_fluctuator])
 
     # Blender
     made_in = 'blender'
@@ -277,9 +278,9 @@ def init_db():
     Recipe(component=modular_engine, ingredient=motor, quantity=2)
     Recipe(component=modular_engine, ingredient=rubber, quantity=15)
     Recipe(component=modular_engine, ingredient=smart_plating, quantity=2)
-    Recipe(component=adaptive_control_unit, ingredient=automated_wiring, quantity=15)
-    Recipe(component=adaptive_control_unit, ingredient=circuit_board, quantity=10)
-    Recipe(component=adaptive_control_unit, ingredient=heavy_modular_frame, quantity=2)
+    Recipe(component=adaptive_control_unit, ingredient=automated_wiring, quantity=5)
+    Recipe(component=adaptive_control_unit, ingredient=circuit_board, quantity=5)
+    Recipe(component=adaptive_control_unit, ingredient=heavy_modular_frame, quantity=1)
     Recipe(component=adaptive_control_unit, ingredient=computer, quantity=2)
     Recipe(component=high_speed_connector, ingredient=quickwire, quantity=56)
     Recipe(component=high_speed_connector, ingredient=cable, quantity=10)
@@ -295,8 +296,8 @@ def init_db():
     Recipe(component=classic_battery, ingredient=alclad_aluminum_sheet, quantity=7)
     Recipe(component=classic_battery, ingredient=plastic, quantity=8)
     Recipe(component=classic_battery, ingredient=wire, quantity=12)
-    Recipe(component=gas_filter, ingredient=coal, quantity=5)
-    Recipe(component=gas_filter, ingredient=rubber, quantity=2)
+    Recipe(component=gas_filter, ingredient=coal, quantity=4)
+    Recipe(component=gas_filter, ingredient=iron_plate, quantity=2)
     Recipe(component=gas_filter, ingredient=fabric, quantity=2)
     Recipe(component=iodine_infused_filter, ingredient=gas_filter, quantity=1)
     Recipe(component=iodine_infused_filter, ingredient=quickwire, quantity=8)
@@ -319,6 +320,9 @@ def init_db():
     Recipe(component=plutonium_fuel_rod, ingredient=steel_beam, quantity=18)
     Recipe(component=plutonium_fuel_rod, ingredient=electromagnetic_control_rod, quantity=6)
     Recipe(component=plutonium_fuel_rod, ingredient=heat_sink, quantity=10)
+    Recipe(component=sam_fluctuator, ingredient=reanimated_sam, quantity=6)
+    Recipe(component=sam_fluctuator, ingredient=wire, quantity=5)
+    Recipe(component=sam_fluctuator, ingredient=steel_pipe, quantity=3)
 
     # Blender
     Recipe(component=battery, ingredient=sulfuric_acid, quantity=2.5)

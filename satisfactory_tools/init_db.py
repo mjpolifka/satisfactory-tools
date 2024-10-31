@@ -31,6 +31,7 @@ def init_db():
     bauxite = Ingredient(name='bauxite', made_in=made_in, speed=1, quantity=1)
     uranium = Ingredient(name='uranium', made_in=made_in, speed=1, quantity=1)
     uranium_waste = Ingredient(name='uranium waste', made_in=made_in, speed=60, quantity=10)
+    sam = Ingredient(name='sam', made_in=made_in, speed=1, quantity=1)
     list.extend([iron_ore, copper_ore, limestone, coal, raw_quartz, sulfur, caterium_ore,
                  bauxite, uranium, uranium_waste])
 
@@ -91,6 +92,7 @@ def init_db():
     aluminum_casing = Ingredient(name='aluminum casing', made_in=made_in, speed=2, quantity=2)
     empty_canister = Ingredient(name='empty canister', made_in=made_in, speed=4, quantity=4)
     copper_powder = Ingredient(name='copper powder', made_in=made_in, speed=6, quantity=5)
+    reanimated_sam = Ingredient(name='reanimated sam', made_in=made_in, speed=2, quantity=1)
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
                  steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder])
     
@@ -213,6 +215,7 @@ def init_db():
     Recipe(component=aluminum_casing, ingredient=aluminum_ingot, quantity=3)
     Recipe(component=empty_canister, ingredient=plastic, quantity=2)
     Recipe(component=copper_powder, ingredient=copper_ingot, quantity=30)
+    Recipe(component=reanimated_sam, ingredient=sam, quantity=4)
 
     # Assembler
     Recipe(component=reinforced_iron_plate, ingredient=iron_plate, quantity=6)

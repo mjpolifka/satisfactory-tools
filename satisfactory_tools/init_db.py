@@ -94,7 +94,7 @@ def init_db():
     copper_powder = Ingredient(name='copper powder', made_in=made_in, speed=6, quantity=5)
     reanimated_sam = Ingredient(name='reanimated sam', made_in=made_in, speed=2, quantity=1)
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
-                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder])
+                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder, reanimated_sam])
     
     #biomass is made from ingredients harvested by hand
         #so what?  Works fine for the miner; just give it a fake time and remember it needs to be fixed
@@ -122,10 +122,12 @@ def init_db():
     compacted_coal = Ingredient(name='compacted coal', made_in=made_in, speed=12, quantity=5)
     encased_plutonium_cell = Ingredient(name='encased plutonium cell', made_in=made_in, speed=12, quantity=1)
     pressure_conversion_cube = Ingredient(name='pressure conversion cube', made_in=made_in, speed=60, quantity=1)
+    nobelisk = Ingredient(name='nobelisk', made_in=made_in, speed=6, quantity=1)
+    pulse_nobelisk = Ingredient(name='pulse nobelisk', made_in=made_in, speed=60, quantity=5)
     list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating, versatile_framework, black_powder, 
                  encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board,
                  alclad_aluminum_sheet, assembly_director_system, heat_sink, electromagnetic_control_rod,
-                 compacted_coal, encased_plutonium_cell, pressure_conversion_cube])
+                 compacted_coal, encased_plutonium_cell, pressure_conversion_cube, nobelisk, pulse_nobelisk])
 
     # Manufacturer
     made_in = 'manufacturer'
@@ -230,8 +232,8 @@ def init_db():
     Recipe(component=versatile_framework, ingredient=steel_beam, quantity=12)
     Recipe(component=black_powder, ingredient=coal, quantity=1)
     Recipe(component=black_powder, ingredient=sulfur, quantity=1)
-    Recipe(component=encased_industrial_beam, ingredient=steel_beam, quantity=4)
-    Recipe(component=encased_industrial_beam, ingredient=concrete, quantity=5)
+    Recipe(component=encased_industrial_beam, ingredient=steel_beam, quantity=3)
+    Recipe(component=encased_industrial_beam, ingredient=concrete, quantity=6)
     Recipe(component=stator, ingredient=steel_pipe, quantity=3)
     Recipe(component=stator, ingredient=wire, quantity=8)
     Recipe(component=motor, ingredient=rotor, quantity=2)
@@ -256,6 +258,10 @@ def init_db():
     Recipe(component=encased_plutonium_cell, ingredient=concrete, quantity=4)
     Recipe(component=pressure_conversion_cube, ingredient=fused_modular_frame, quantity=1)
     Recipe(component=pressure_conversion_cube, ingredient=radio_control_unit, quantity=2)
+    Recipe(component=nobelisk, ingredient=black_powder, quantity=2)
+    Recipe(component=nobelisk, ingredient=steel_pipe, quantity=2)
+    Recipe(component=pulse_nobelisk, ingredient=nobelisk, quantity=5)
+    Recipe(component=pulse_nobelisk, ingredient=crystal_oscillator, quantity=1)
 
     # Manufacturer
     Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)

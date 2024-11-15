@@ -17,6 +17,8 @@ def init_db():
 
     # By Hand
     made_in = 'by_hand'
+    leaves = Ingredient(name='leaves', made_in=made_in, speed=1, quantity=1)
+    list.extend([leaves])
     # need to add leaves, wood, alien components, etc
 
     # Miner
@@ -38,7 +40,8 @@ def init_db():
     # Oil Extractor
     made_in = 'oil extractor'
     crude_oil = Ingredient(name='crude oil', made_in=made_in, speed=1, quantity=2)
-    list.extend([crude_oil])
+    heavy_oil_residue = Ingredient(name='heavy oil reside - placeholder', made_in=made_in, speed=1, quantity=1)
+    list.extend([crude_oil, heavy_oil_residue])
 
     # Water Extractor
     made_in = 'water extractor'
@@ -72,7 +75,9 @@ def init_db():
     aluminum_scrap = Ingredient(name='aluminum scrap', made_in=made_in, speed=1, quantity=6)
     sulfuric_acid = Ingredient(name='sulfuric acid', made_in=made_in, speed=6, quantity=5)
     fabric = Ingredient(name='fabric', made_in=made_in, speed=2, quantity=1)
-    list.extend([polymer_resin, plastic, rubber, alumina_solution, aluminum_scrap, sulfuric_acid, fabric])
+    smokeless_powder = Ingredient(name='smokeless powder', made_in=made_in, speed=6, quantity=2)
+    list.extend([polymer_resin, plastic, rubber, alumina_solution, aluminum_scrap, sulfuric_acid, fabric,
+                 smokeless_powder])
     
     # Constructor
     made_in = 'constructor'
@@ -93,8 +98,11 @@ def init_db():
     empty_canister = Ingredient(name='empty canister', made_in=made_in, speed=4, quantity=4)
     copper_powder = Ingredient(name='copper powder', made_in=made_in, speed=6, quantity=5)
     reanimated_sam = Ingredient(name='reanimated sam', made_in=made_in, speed=2, quantity=1)
+    biomass = Ingredient(name='biomass', made_in=made_in, speed=5, quantity=5)
+    empty_fluid_tank = Ingredient(name='empty fluid tank', made_in=made_in, speed=60, quantity=1)
     list.extend([iron_rod, iron_plate, wire, cable, concrete, copper_sheet, quartz_crystal, silica, steel_beam, 
-                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder, reanimated_sam])
+                 steel_pipe, iron_rebar, quickwire, aluminum_casing, empty_canister, copper_powder, reanimated_sam,
+                 biomass, empty_fluid_tank])
     
     #biomass is made from ingredients harvested by hand
         #so what?  Works fine for the miner; just give it a fake time and remember it needs to be fixed
@@ -124,10 +132,14 @@ def init_db():
     pressure_conversion_cube = Ingredient(name='pressure conversion cube', made_in=made_in, speed=60, quantity=1)
     nobelisk = Ingredient(name='nobelisk', made_in=made_in, speed=6, quantity=1)
     pulse_nobelisk = Ingredient(name='pulse nobelisk', made_in=made_in, speed=60, quantity=5)
+    cluster_nobelisk = Ingredient(name='cluster nobelisk', made_in=made_in, speed=24, quantity=1)
+    gas_nobelisk = Ingredient(name='gas nobelisk', made_in=made_in, speed=12, quantity=1)
+    magnetic_field_generator = Ingredient(name='magnetic field generator', made_in=made_in, speed=120, quantity=2)
     list.extend([reinforced_iron_plate, rotor, modular_frame, smart_plating, versatile_framework, black_powder, 
                  encased_industrial_beam, stator, motor, automated_wiring, ai_limiter, circuit_board,
                  alclad_aluminum_sheet, assembly_director_system, heat_sink, electromagnetic_control_rod,
-                 compacted_coal, encased_plutonium_cell, pressure_conversion_cube, nobelisk, pulse_nobelisk])
+                 compacted_coal, encased_plutonium_cell, pressure_conversion_cube, nobelisk, pulse_nobelisk, 
+                 cluster_nobelisk, gas_nobelisk, magnetic_field_generator])
 
     # Manufacturer
     made_in = 'manufacturer'
@@ -143,15 +155,14 @@ def init_db():
     gas_filter = Ingredient(name='gas filter', made_in=made_in, speed=8, quantity=1)
     iodine_infused_filter = Ingredient(name='iodine infused filter', made_in=made_in, speed=16, quantity=1)
     uranium_fuel_rod = Ingredient(name='uranium fuel rod', made_in=made_in, speed=150, quantity=1)
-    magnetic_field_generator = Ingredient(name='magnetic field generator', made_in=made_in, speed=120, quantity=2)
     turbo_motor = Ingredient(name='turbo motor', made_in=made_in, speed=32, quantity=1)
     thermal_propulsion_rocket = Ingredient(name='thermal propulsion rocket', made_in=made_in, speed=120, quantity=2)
     plutonium_fuel_rod = Ingredient(name='plutonium fuel rod', made_in=made_in, speed=240, quantity=1)
     sam_fluctuator = Ingredient(name='sam fluctuator', made_in=made_in, speed=6, quantity=1)
     list.extend([crystal_oscillator, heavy_modular_frame, computer, modular_engine, adaptive_control_unit, 
                  high_speed_connector, supercomputer, radio_control_unit, classic_battery, gas_filter,
-                 iodine_infused_filter, uranium_fuel_rod, magnetic_field_generator, turbo_motor,
-                 thermal_propulsion_rocket, plutonium_fuel_rod, sam_fluctuator])
+                 iodine_infused_filter, uranium_fuel_rod, turbo_motor, thermal_propulsion_rocket,
+                 plutonium_fuel_rod, sam_fluctuator])
 
     # Blender
     made_in = 'blender'
@@ -200,6 +211,8 @@ def init_db():
     Recipe(component=sulfuric_acid, ingredient=water, quantity=5)
     Recipe(component=fabric, ingredient=polymer_resin, quantity=1)
     Recipe(component=fabric, ingredient=water, quantity=1)
+    Recipe(component=smokeless_powder, ingredient=black_powder, quantity=2)
+    Recipe(component=smokeless_powder, ingredient=heavy_oil_residue, quantity=1)
 
     # Constructor
     Recipe(component=iron_rod, ingredient=iron_ingot, quantity=1)
@@ -219,6 +232,8 @@ def init_db():
     Recipe(component=empty_canister, ingredient=plastic, quantity=2)
     Recipe(component=copper_powder, ingredient=copper_ingot, quantity=30)
     Recipe(component=reanimated_sam, ingredient=sam, quantity=4)
+    Recipe(component=biomass, ingredient=leaves, quantity=10)
+    Recipe(component=empty_fluid_tank, ingredient=aluminum_ingot, quantity=1)
 
     # Assembler
     Recipe(component=reinforced_iron_plate, ingredient=iron_plate, quantity=6)
@@ -252,7 +267,7 @@ def init_db():
     Recipe(component=heat_sink, ingredient=alclad_aluminum_sheet, quantity=5)
     Recipe(component=heat_sink, ingredient=copper_sheet, quantity=3)
     Recipe(component=electromagnetic_control_rod, ingredient=stator, quantity=3)
-    Recipe(component=electromagnetic_control_rod, ingredient=ai_limiter, quantity=4)
+    Recipe(component=electromagnetic_control_rod, ingredient=ai_limiter, quantity=2)
     Recipe(component=compacted_coal, ingredient=coal, quantity=5)
     Recipe(component=compacted_coal, ingredient=sulfur, quantity=5)
     Recipe(component=encased_plutonium_cell, ingredient=plutonium_pellet, quantity=2)
@@ -263,6 +278,12 @@ def init_db():
     Recipe(component=nobelisk, ingredient=steel_pipe, quantity=2)
     Recipe(component=pulse_nobelisk, ingredient=nobelisk, quantity=5)
     Recipe(component=pulse_nobelisk, ingredient=crystal_oscillator, quantity=1)
+    Recipe(component=cluster_nobelisk, ingredient=nobelisk, quantity=3)
+    Recipe(component=cluster_nobelisk, ingredient=smokeless_powder, quantity=4)
+    Recipe(component=gas_nobelisk, ingredient=nobelisk, quantity=1)
+    Recipe(component=gas_nobelisk, ingredient=biomass, quantity=10)
+    Recipe(component=magnetic_field_generator, ingredient=versatile_framework, quantity=5)
+    Recipe(component=magnetic_field_generator, ingredient=electromagnetic_control_rod, quantity=2)
 
     # Manufacturer
     Recipe(component=crystal_oscillator, ingredient=quartz_crystal, quantity=36)
@@ -285,13 +306,13 @@ def init_db():
     Recipe(component=high_speed_connector, ingredient=quickwire, quantity=56)
     Recipe(component=high_speed_connector, ingredient=cable, quantity=10)
     Recipe(component=high_speed_connector, ingredient=circuit_board, quantity=1)
-    Recipe(component=supercomputer, ingredient=computer, quantity=2)
+    Recipe(component=supercomputer, ingredient=computer, quantity=4)
     Recipe(component=supercomputer, ingredient=ai_limiter, quantity=2)
     Recipe(component=supercomputer, ingredient=high_speed_connector, quantity=3)
     Recipe(component=supercomputer, ingredient=plastic, quantity=28)
     Recipe(component=radio_control_unit, ingredient=aluminum_casing, quantity=32)
     Recipe(component=radio_control_unit, ingredient=crystal_oscillator, quantity=1)
-    Recipe(component=radio_control_unit, ingredient=computer, quantity=1)
+    Recipe(component=radio_control_unit, ingredient=computer, quantity=2)
     Recipe(component=classic_battery, ingredient=sulfur, quantity=6)
     Recipe(component=classic_battery, ingredient=alclad_aluminum_sheet, quantity=7)
     Recipe(component=classic_battery, ingredient=plastic, quantity=8)
@@ -305,9 +326,6 @@ def init_db():
     Recipe(component=uranium_fuel_rod, ingredient=encased_uranium_cell, quantity=50)
     Recipe(component=uranium_fuel_rod, ingredient=encased_industrial_beam, quantity=3)
     Recipe(component=uranium_fuel_rod, ingredient=electromagnetic_control_rod, quantity=5)
-    Recipe(component=magnetic_field_generator, ingredient=versatile_framework, quantity=5)
-    Recipe(component=magnetic_field_generator, ingredient=electromagnetic_control_rod, quantity=2)
-    Recipe(component=magnetic_field_generator, ingredient=battery, quantity=10)
     Recipe(component=turbo_motor, ingredient=cooling_system, quantity=4)
     Recipe(component=turbo_motor, ingredient=radio_control_unit, quantity=2)
     Recipe(component=turbo_motor, ingredient=motor, quantity=4)
